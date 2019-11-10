@@ -78,21 +78,10 @@
                     @endauth
                 </div>
             @endif
-                <div class="top-left links">
-
-                    <li><a class="nav-link" href="{{  url("/ar") }}">Ar</a></li>
-                    <li><a class="nav-link" href="{{ url("/en")  }}">En</a></li>
-
-                </div>
 
             <div class="content">
                 <div class="title m-b-md">
-                    @if(App::getLocale() == 'en')
-                        {{setting('site.title')}}
-                        @else
-                        {{setting('site.sitetitlear')}}
-                        @endif
-
+                    Laravel
                 </div>
 
                 <div class="links">
