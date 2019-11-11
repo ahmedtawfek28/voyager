@@ -64,6 +64,7 @@
         </style>
     </head>
     <body>
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -83,6 +84,20 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
+{{--                <img src="storage/{{setting('general.img')}}">--}}
+{{--                // Loads specific locale translations--}}
+                <h1>
+                    @php
+                        $posts = \App\Slide::with('translations')->first();
+                         echo  $posts->getTranslatedAttribute('title', App::getLocale());
+                    @endphp
+                </h1>
+                <h1>
+                    @php
+                        $posts = \App\Slide::with('translations')->first();
+                         echo  $posts->getTranslatedAttribute('body', App::getLocale());
+                    @endphp
+                </h1>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
