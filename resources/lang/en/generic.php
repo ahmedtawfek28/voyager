@@ -111,4 +111,6 @@ return [
     'yes'                    => 'Yes',
     'yes_please'             => 'Yes, Please',
     'pages'                  => 'Pages',
+    'arabic'                  => 'Arabic',
+    'english'                  => 'English',
 ];

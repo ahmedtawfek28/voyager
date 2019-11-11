@@ -142,7 +142,18 @@ return [
                 'icon_class' => 'voyager-power',
             ],
         ],
-
+        'navbar_languages' => [
+	        'generic.arabic' => [
+		        'route'      => 'voyager.arabic',
+		        'classes'    => 'class-full-of-rum',
+		        'icon_class' => 'https://cdn.countryflags.com/thumbs/united-arab-emirates/flag-round-250.png',
+	        ],
+	        'generic.english' => [
+		        'route'      => 'voyager.english',
+		        'classes'    => 'class-full-of-rum',
+		        'icon_class' => 'http://pluspng.com/img-png/download-united-kingdom-flag-png-images-transparent-gallery-advertisement-300.png',
+	        ],
+        ],
         'widgets' => [
             'TCG\\Voyager\\Widgets\\UserDimmer',
             'TCG\\Voyager\\Widgets\\PostDimmer',
