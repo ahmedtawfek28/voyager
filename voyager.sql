@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 13, 2019 at 02:34 PM
--- Server version: 10.1.40-MariaDB
--- PHP Version: 7.3.5
+-- Host: localhost:3306
+-- Generation Time: Nov 13, 2019 at 09:14 PM
+-- Server version: 5.7.27-0ubuntu0.18.04.1
+-- PHP Version: 7.2.24-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -21,6 +19,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `voyager`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `avatar` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'users/default.png',
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `settings` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Ahmed Tawfek', 'admin@admin.com', 'admins/November2019/ei7LhOVfth266sjDWm0w.png', NULL, '$2y$10$EHGhfYH2Q2yY2IW6j2zl0emo/Ap7CLcgBKPnb0gw7ILBhcGxy7EYS', 'PoJYDRGgbc81zG0vYESXHn55RUxIRmChJyhRfDVFMJvX1V0Dxe5PDYsNWHvv', '{\"locale\":\"ar\"}', '2019-11-10 07:05:44', '2019-11-11 13:44:56');
 
 -- --------------------------------------------------------
 
@@ -315,6 +340,20 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `newtable`
+--
+
+CREATE TABLE `newtable` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `num` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pages`
 --
 
@@ -573,6 +612,63 @@ INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `display_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `value` text COLLATE utf8_unicode_ci,
+  `details` text COLLATE utf8_unicode_ci,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `order` int(11) NOT NULL DEFAULT '1',
+  `group` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`, `order`, `group`) VALUES
+(1, 'site.title', 'Site Title', 'Site Title', '', 'text', 1, 'Site'),
+(2, 'site.description', 'Site Description', 'Site Description', '', 'text', 2, 'Site'),
+(3, 'site.logo', 'Site Logo', '', '', 'image', 3, 'Site'),
+(4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', NULL, '', 'text', 4, 'Site'),
+(5, 'admin.bg_image', 'Admin Background Image', 'settings/November2019/whnHKD7CTarXNwPq36xM.jpg', '', 'image', 5, 'Admin'),
+(6, 'admin.title', 'Admin Title', 'Main Site', '', 'text', 1, 'Admin'),
+(7, 'admin.description', 'Admin Description', 'Welcome to Main Site.', '', 'text', 2, 'Admin'),
+(8, 'admin.loader', 'Admin Loader', 'settings/November2019/NN5pp7zElmlJyj0GAb2x.png', '', 'image', 3, 'Admin'),
+(9, 'admin.icon_image', 'Admin Icon Image', 'settings/November2019/FsHMW0ilsgT6xLMWfTUX.png', '', 'image', 4, 'Admin'),
+(10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', '34843910000-5bmljtoi8na5ke95jgsk96bcmk8f8ks4.apps.googleusercontent.com', '', 'text', 1, 'Admin'),
+(11, 'general.title_ar', 'Title Ar', NULL, NULL, 'text', 6, 'General');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `slides`
+--
+
+CREATE TABLE `slides` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `body` longtext COLLATE utf8_unicode_ci,
+  `img` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `slides`
+--
+
+INSERT INTO `slides` (`id`, `title`, `body`, `img`, `created_at`, `updated_at`) VALUES
+(2, 'Test', '<p>Testing How it Work</p>', 'slides/November2019/zDJugrwEkKX1DLZXdRvv.gif', '2019-11-11 13:49:00', '2019-11-11 13:49:39'),
+(3, 'sfsfdsf', '<p>sdfsdfsdf</p>', 'slides/November2019/h61a2m86CH8Hp4xJ4J7Y.png', '2019-11-11 14:03:33', '2019-11-11 14:03:33');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `translations`
 --
 
@@ -684,8 +780,10 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 (102, 'menu_items', 'title', 18, 'ar', 'الشرائح', '2019-11-11 09:28:44', '2019-11-11 09:28:44'),
 (103, 'categories', 'slug', 1, 'ar', 'category-1', '2019-11-11 11:19:03', '2019-11-11 11:19:03'),
 (104, 'categories', 'name', 1, 'ar', 'Category 1', '2019-11-11 11:19:03', '2019-11-11 11:19:03'),
-(105, 'slides', 'title', 1, 'ar', 'اول اسلايد شو', '2019-11-13 06:06:40', '2019-11-13 06:06:40'),
-(106, 'slides', 'body', 1, 'ar', '<p style=\"text-align: right;\"><span style=\"color: #00ff00;\"><strong>اول اسلايد شو</strong></span></p>', '2019-11-13 06:06:40', '2019-11-13 06:07:52');
+(105, 'slides', 'title', 2, 'ar', 'اختبار', '2019-11-11 13:49:16', '2019-11-11 13:49:16'),
+(106, 'slides', 'body', 2, 'ar', '<p>اختبار هو شغال ولا لا</p>', '2019-11-11 13:49:16', '2019-11-11 13:49:16'),
+(107, 'slides', 'title', 3, 'ar', 'شاةثي', '2019-11-11 14:03:33', '2019-11-11 14:03:33'),
+(108, 'slides', 'body', 3, 'ar', '<p>سيبسيبسيب</p>', '2019-11-11 14:03:33', '2019-11-11 14:03:33');
 
 -- --------------------------------------------------------
 
@@ -780,6 +878,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `newtable`
+--
+ALTER TABLE `newtable`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pages`
 --
 ALTER TABLE `pages`
@@ -822,6 +926,19 @@ ALTER TABLE `roles`
   ADD UNIQUE KEY `roles_name_unique` (`name`);
 
 --
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `settings_key_unique` (`key`);
+
+--
+-- Indexes for table `slides`
+--
+ALTER TABLE `slides`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `translations`
 --
 ALTER TABLE `translations`
@@ -853,79 +970,81 @@ ALTER TABLE `user_roles`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
-
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
+--
+-- AUTO_INCREMENT for table `newtable`
+--
+ALTER TABLE `newtable`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
-
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `slides`
+--
+ALTER TABLE `slides`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
-
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- Constraints for dumped tables
 --
@@ -967,7 +1086,6 @@ ALTER TABLE `users`
 ALTER TABLE `user_roles`
   ADD CONSTRAINT `user_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `user_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
