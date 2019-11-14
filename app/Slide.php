@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Slide extends Model
 {
 	use Translatable;
-	protected $translatable = ['title', 'body'];
+	protected $translatable = ['maintitle','title', 'body'];
 }
