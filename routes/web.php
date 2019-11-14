@@ -55,8 +55,8 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::group(['middleware' => 'admin.user'], function () use ($namespacePrefix) {
             event(new RoutingAdmin());
-            Route::get('ar', 'LanguageController@ar');
-            Route::get('en', 'LanguageController@en');
+            Route::get('ar', ['uses' => 'LanguageController@ar',     'as' => 'ar']);
+            Route::get('en', ['uses' => 'LanguageController@en',     'as' => 'en']);
             // Main Admin and Logout Route
             Route::get('/', ['uses' => $namespacePrefix.'VoyagerController@index',   'as' => 'dashboard']);
             Route::post('logout', ['uses' => $namespacePrefix.'VoyagerController@logout',  'as' => 'logout']);

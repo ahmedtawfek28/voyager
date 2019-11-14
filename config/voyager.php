@@ -144,12 +144,12 @@ return [
         ],
         'navbar_languages' => [
 	        'generic.arabic' => [
-		        'route'      => 'voyager.arabic',
+		        'route'      => 'voyager.ar',
 		        'classes'    => 'class-full-of-rum',
 		        'icon_class' => 'https://cdn.countryflags.com/thumbs/united-arab-emirates/flag-round-250.png',
 	        ],
 	        'generic.english' => [
-		        'route'      => 'voyager.english',
+		        'route'      => 'voyager.en',
 		        'classes'    => 'class-full-of-rum',
 		        'icon_class' => 'http://pluspng.com/img-png/download-united-kingdom-flag-png-images-transparent-gallery-advertisement-300.png',
 	        ],
