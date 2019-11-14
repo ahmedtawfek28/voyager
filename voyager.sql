@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 13, 2019 at 09:14 PM
--- Server version: 5.7.27-0ubuntu0.18.04.1
--- PHP Version: 7.2.24-0ubuntu0.18.04.1
+-- Host: 127.0.0.1
+-- Generation Time: Nov 14, 2019 at 02:57 PM
+-- Server version: 10.1.40-MariaDB
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -45,7 +47,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Ahmed Tawfek', 'admin@admin.com', 'admins/November2019/ei7LhOVfth266sjDWm0w.png', NULL, '$2y$10$EHGhfYH2Q2yY2IW6j2zl0emo/Ap7CLcgBKPnb0gw7ILBhcGxy7EYS', 'PoJYDRGgbc81zG0vYESXHn55RUxIRmChJyhRfDVFMJvX1V0Dxe5PDYsNWHvv', '{\"locale\":\"ar\"}', '2019-11-10 07:05:44', '2019-11-11 13:44:56');
+(1, 1, 'ar', 'admin@admin.com', 'admins\\November2019\\SqlGB8mls8g5qHgGzcjG.png', NULL, '$2y$10$EHGhfYH2Q2yY2IW6j2zl0emo/Ap7CLcgBKPnb0gw7ILBhcGxy7EYS', 'PoJYDRGgbc81zG0vYESXHn55RUxIRmChJyhRfDVFMJvX1V0Dxe5PDYsNWHvv', '{\"locale\":\"ar\"}', '2019-11-10 07:05:44', '2019-11-14 05:42:04');
 
 -- --------------------------------------------------------
 
@@ -167,11 +169,12 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (67, 9, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 8),
 (68, 9, 'admin_belongsto_role_relationship', 'relationship', 'roles', 0, 1, 1, 1, 1, 1, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"admins\",\"pivot\":\"0\",\"taggable\":\"0\"}', 12),
 (69, 10, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(70, 10, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
-(71, 10, 'body', 'rich_text_box', 'Body', 0, 1, 1, 1, 1, 1, '{}', 3),
-(72, 10, 'img', 'image', 'Img', 0, 1, 1, 1, 1, 1, '{}', 4),
-(73, 10, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
-(74, 10, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6);
+(70, 10, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 3),
+(71, 10, 'body', 'rich_text_box', 'Body', 0, 0, 1, 1, 1, 1, '{}', 4),
+(72, 10, 'img', 'image', 'Img', 0, 1, 1, 1, 1, 1, '{}', 5),
+(73, 10, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6),
+(74, 10, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
+(75, 10, 'maintitle', 'text', 'MainTitle', 0, 1, 1, 1, 1, 1, '{}', 2);
 
 -- --------------------------------------------------------
 
@@ -209,7 +212,7 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2019-11-10 09:05:44', '2019-11-10 09:05:44'),
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2019-11-10 09:05:45', '2019-11-10 09:05:45'),
 (9, 'admins', 'admins', 'Admin', 'Admins', 'voyager-person', 'App\\Admin', 'TCG\\Voyager\\Policies\\UserPolicy', 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2019-11-11 05:35:32', '2019-11-11 06:36:14'),
-(10, 'slides', 'slides', 'Slide', 'Slides', 'voyager-code', 'App\\Slide', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2019-11-11 07:14:20', '2019-11-11 08:06:38');
+(10, 'slides', 'slides', 'Slide', 'Slides', 'voyager-code', 'App\\Slide', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2019-11-11 07:14:20', '2019-11-14 07:23:17');
 
 -- --------------------------------------------------------
 
@@ -274,23 +277,23 @@ CREATE TABLE `menu_items` (
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1, 1, 'Dashboard', '', '_self', 'voyager-dashboard', '#000000', NULL, 1, '2019-11-10 09:05:37', '2019-11-10 09:19:52', 'voyager.dashboard', 'null'),
-(2, 1, 'Media', '', '_self', 'voyager-images', '#000000', NULL, 5, '2019-11-10 09:05:37', '2019-11-11 07:59:55', 'voyager.media.index', 'null'),
+(2, 1, 'Media', '', '_self', 'voyager-images', '#000000', NULL, 5, '2019-11-10 09:05:37', '2019-11-14 06:38:29', 'voyager.media.index', 'null'),
 (3, 1, 'Users', '', '_self', 'voyager-person', '#000000', 16, 2, '2019-11-10 09:05:37', '2019-11-11 06:34:16', 'voyager.users.index', 'null'),
-(4, 1, 'Roles', '', '_self', 'voyager-lock', '#000000', NULL, 4, '2019-11-10 09:05:37', '2019-11-11 07:59:55', 'voyager.roles.index', 'null'),
-(5, 1, 'Tools', '', '_self', 'voyager-tools', '#000000', NULL, 9, '2019-11-10 09:05:37', '2019-11-11 07:59:55', NULL, ''),
+(4, 1, 'Roles', '', '_self', 'voyager-lock', '#000000', NULL, 4, '2019-11-10 09:05:37', '2019-11-14 06:38:29', 'voyager.roles.index', 'null'),
+(5, 1, 'Tools', '', '_self', 'voyager-tools', '#000000', NULL, 9, '2019-11-10 09:05:37', '2019-11-14 06:38:29', NULL, ''),
 (6, 1, 'Menu Builder', '', '_self', 'voyager-list', '#000000', 5, 1, '2019-11-10 09:05:37', '2019-11-10 09:39:35', 'voyager.menus.index', 'null'),
 (7, 1, 'Database', '', '_self', 'voyager-data', '#000000', 5, 2, '2019-11-10 09:05:37', '2019-11-10 09:39:54', 'voyager.database.index', 'null'),
 (8, 1, 'Compass', '', '_self', 'voyager-compass', '#000000', 5, 3, '2019-11-10 09:05:37', '2019-11-10 09:40:33', 'voyager.compass.index', 'null'),
 (9, 1, 'BREAD', '', '_self', 'voyager-bread', '#000000', 5, 4, '2019-11-10 09:05:37', '2019-11-10 09:40:51', 'voyager.bread.index', 'null'),
 (10, 1, 'Settings', '', '_self', 'voyager-settings', '#000000', 17, 1, '2019-11-10 09:05:37', '2019-11-11 06:45:19', 'voyager.settings.index', 'null'),
-(11, 1, 'Categories', '', '_self', 'voyager-categories', '#000000', NULL, 6, '2019-11-10 09:05:43', '2019-11-11 07:59:55', 'voyager.categories.index', 'null'),
-(12, 1, 'Posts', '', '_self', 'voyager-news', '#000000', NULL, 7, '2019-11-10 09:05:44', '2019-11-11 07:59:55', 'voyager.posts.index', 'null'),
-(13, 1, 'Pages', '', '_self', 'voyager-file-text', '#000000', NULL, 8, '2019-11-10 09:05:46', '2019-11-11 07:59:55', 'voyager.pages.index', 'null'),
+(11, 1, 'Categories', '', '_self', 'voyager-categories', '#000000', NULL, 6, '2019-11-10 09:05:43', '2019-11-14 06:38:29', 'voyager.categories.index', 'null'),
+(12, 1, 'Posts', '', '_self', 'voyager-news', '#000000', NULL, 7, '2019-11-10 09:05:44', '2019-11-14 06:38:29', 'voyager.posts.index', 'null'),
+(13, 1, 'Pages', '', '_self', 'voyager-file-text', '#000000', NULL, 8, '2019-11-10 09:05:46', '2019-11-14 06:38:29', 'voyager.pages.index', 'null'),
 (14, 1, 'Hooks', '', '_self', 'voyager-hook', '#000000', 5, 5, '2019-11-10 09:05:48', '2019-11-10 09:41:04', 'voyager.hooks', 'null'),
 (15, 1, 'Admins', '', '_self', 'voyager-person', '#000000', 16, 1, '2019-11-11 05:35:32', '2019-11-11 06:34:30', 'voyager.admins.index', 'null'),
-(16, 1, 'All Users', '', '_self', 'voyager-people', '#000000', NULL, 3, '2019-11-11 06:33:43', '2019-11-11 06:44:48', NULL, ''),
+(16, 1, 'All Users', '', '_self', 'voyager-people', '#000000', NULL, 3, '2019-11-11 06:33:43', '2019-11-14 06:38:29', NULL, ''),
 (17, 1, 'Site Settings', '', '_self', 'voyager-settings', '#000000', NULL, 2, '2019-11-11 06:43:15', '2019-11-11 06:44:48', NULL, ''),
-(18, 1, 'Slides', '', '_self', 'voyager-code', '#000000', 17, 2, '2019-11-11 07:14:20', '2019-11-11 09:28:44', 'voyager.slides.index', 'null');
+(18, 1, 'Slides', '', '_self', 'voyager-code', '#000000', 17, 2, '2019-11-11 07:14:20', '2019-11-14 06:39:57', 'voyager.slides.index', 'null');
 
 -- --------------------------------------------------------
 
@@ -336,20 +339,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (25, '2016_01_01_000000_create_posts_table', 2),
 (26, '2016_02_15_204651_create_categories_table', 2),
 (27, '2017_04_11_000000_alter_post_nullable_fields_table', 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `newtable`
---
-
-CREATE TABLE `newtable` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `num` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -635,13 +624,16 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (2, 'site.description', 'Site Description', 'Site Description', '', 'text', 2, 'Site'),
 (3, 'site.logo', 'Site Logo', '', '', 'image', 3, 'Site'),
 (4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', NULL, '', 'text', 4, 'Site'),
-(5, 'admin.bg_image', 'Admin Background Image', 'settings/November2019/whnHKD7CTarXNwPq36xM.jpg', '', 'image', 5, 'Admin'),
+(5, 'admin.bg_image', 'Admin Background Image', 'settings\\November2019\\8OeboYiPI7V7oWXdQAFx.jpg', '', 'image', 5, 'Admin'),
 (6, 'admin.title', 'Admin Title', 'Main Site', '', 'text', 1, 'Admin'),
 (7, 'admin.description', 'Admin Description', 'Welcome to Main Site.', '', 'text', 2, 'Admin'),
-(8, 'admin.loader', 'Admin Loader', 'settings/November2019/NN5pp7zElmlJyj0GAb2x.png', '', 'image', 3, 'Admin'),
-(9, 'admin.icon_image', 'Admin Icon Image', 'settings/November2019/FsHMW0ilsgT6xLMWfTUX.png', '', 'image', 4, 'Admin'),
+(8, 'admin.loader', 'Admin Loader', 'settings\\November2019\\cvRfruT3mRrZa0h6tcbj.png', '', 'image', 3, 'Admin'),
+(9, 'admin.icon_image', 'Admin Icon Image', 'settings\\November2019\\RSrR0u6Xrs9jCU0m8tUl.png', '', 'image', 4, 'Admin'),
 (10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', '34843910000-5bmljtoi8na5ke95jgsk96bcmk8f8ks4.apps.googleusercontent.com', '', 'text', 1, 'Admin'),
-(11, 'general.title_ar', 'Title Ar', NULL, NULL, 'text', 6, 'General');
+(12, 'general.address_ar', 'Address Arabic', 'القاهرة - مدينة نصر - الحي الثامن', NULL, 'text', 7, 'General'),
+(13, 'general.address_en', 'Address English', 'Cairo -Nasr City - Al Hayy Ath Thamin', NULL, 'text', 8, 'General'),
+(14, 'general.phone', 'phone', '+20 112 6697 538', NULL, 'text', 9, 'General'),
+(15, 'general.facebook', 'FaceBook', NULL, NULL, 'text', 10, 'General');
 
 -- --------------------------------------------------------
 
@@ -655,16 +647,16 @@ CREATE TABLE `slides` (
   `body` longtext COLLATE utf8_unicode_ci,
   `img` text COLLATE utf8_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `maintitle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `slides`
 --
 
-INSERT INTO `slides` (`id`, `title`, `body`, `img`, `created_at`, `updated_at`) VALUES
-(2, 'Test', '<p>Testing How it Work</p>', 'slides/November2019/zDJugrwEkKX1DLZXdRvv.gif', '2019-11-11 13:49:00', '2019-11-11 13:49:39'),
-(3, 'sfsfdsf', '<p>sdfsdfsdf</p>', 'slides/November2019/h61a2m86CH8Hp4xJ4J7Y.png', '2019-11-11 14:03:33', '2019-11-11 14:03:33');
+INSERT INTO `slides` (`id`, `title`, `body`, `img`, `created_at`, `updated_at`, `maintitle`) VALUES
+(3, 'asdasdasd', '<p>asdasdasd</p>', 'slides\\November2019\\fmbMc5TgWUTLtp6TYGVq.jpg', '2019-11-14 08:37:00', '2019-11-14 08:37:36', 'asdsda');
 
 -- --------------------------------------------------------
 
@@ -780,10 +772,10 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 (102, 'menu_items', 'title', 18, 'ar', 'الشرائح', '2019-11-11 09:28:44', '2019-11-11 09:28:44'),
 (103, 'categories', 'slug', 1, 'ar', 'category-1', '2019-11-11 11:19:03', '2019-11-11 11:19:03'),
 (104, 'categories', 'name', 1, 'ar', 'Category 1', '2019-11-11 11:19:03', '2019-11-11 11:19:03'),
-(105, 'slides', 'title', 2, 'ar', 'اختبار', '2019-11-11 13:49:16', '2019-11-11 13:49:16'),
-(106, 'slides', 'body', 2, 'ar', '<p>اختبار هو شغال ولا لا</p>', '2019-11-11 13:49:16', '2019-11-11 13:49:16'),
-(107, 'slides', 'title', 3, 'ar', 'شاةثي', '2019-11-11 14:03:33', '2019-11-11 14:03:33'),
-(108, 'slides', 'body', 3, 'ar', '<p>سيبسيبسيب</p>', '2019-11-11 14:03:33', '2019-11-11 14:03:33');
+(108, 'data_rows', 'display_name', 75, 'ar', 'MainTitle', '2019-11-14 07:18:11', '2019-11-14 07:18:11'),
+(112, 'slides', 'maintitle', 3, 'ar', 'شسيشسيشس', '2019-11-14 08:37:36', '2019-11-14 08:37:36'),
+(113, 'slides', 'title', 3, 'ar', 'شسيشسي', '2019-11-14 08:37:36', '2019-11-14 08:37:36'),
+(114, 'slides', 'body', 3, 'ar', '<p>qweqwewqeشسيشسيشسيشسي</p>', '2019-11-14 08:37:37', '2019-11-14 08:37:37');
 
 -- --------------------------------------------------------
 
@@ -878,12 +870,6 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `newtable`
---
-ALTER TABLE `newtable`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `pages`
 --
 ALTER TABLE `pages`
@@ -970,81 +956,91 @@ ALTER TABLE `user_roles`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
---
--- AUTO_INCREMENT for table `newtable`
---
-ALTER TABLE `newtable`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `slides`
 --
 ALTER TABLE `slides`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- Constraints for dumped tables
 --
@@ -1086,6 +1082,7 @@ ALTER TABLE `users`
 ALTER TABLE `user_roles`
   ADD CONSTRAINT `user_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `user_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
