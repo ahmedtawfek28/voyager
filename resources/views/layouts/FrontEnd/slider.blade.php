@@ -9,11 +9,7 @@
 
                     <img src="{{ url('storage/'.str_replace('\\','/',$slider->img))}}">
                     {{-- <img src="storage/slides/November2019/fmbMc5TgWUTLtp6TYGVq.jpg" --}}
-                         alt=""
-                         data-bgposition="center center"
-                         data-bgfit="cover"
-                         data-bgrepeat="no-repeat"
-                         class="rev-slidebg">
+                         
 
                     <div class="tp-caption"
                          data-x="center" data-hoffset="['-170','-170','-170','-350']"
