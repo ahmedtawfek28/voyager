@@ -25,7 +25,8 @@
                          data-start="700"
                          data-fontsize="['16','16','16','40']"
                          data-lineheight="['25','25','25','45']"
-                         data-transform_in="y:[-50%];opacity:0;s:500;">WE WORK HARD AND PORTO HAS
+                         data-transform_in="y:[-50%];opacity:0;s:500;">
+                        {{$slider->translate(app()->getLocale())->maintitle}}
                     </div>
 
                     <div class="tp-caption"
@@ -41,18 +42,17 @@
                          data-x="center"
                          data-y="center"
                          data-fontsize="['50','50','50','90']"
-                         data-lineheight="['55','55','55','95']">THE BEST DESIGN
+                         data-lineheight="['55','55','55','95']">{{$slider->translate(app()->getLocale())->title}}
                     </div>
 
                     <div class="tp-caption font-weight-light ws-normal text-center"
-                         data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                         data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
                          data-x="center"
                          data-y="center" data-voffset="['60','60','60','105']"
                          data-width="['530','530','530','1100']"
                          data-fontsize="['18','18','18','40']"
                          data-lineheight="['26','26','26','45']"
-                         style="color: #b5b5b5;">Trusted by over 3000 satisfied users, Porto is a huge success in
-                        the one of largest world's MarketPlace.
+                         style="color: #b5b5b5;">{!!$slider->translate(app()->getLocale())->body!!}
                     </div>
 
                 </li>
