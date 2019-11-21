@@ -40,7 +40,7 @@ data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEn
                                 </li>
                            
                             <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show">
-                                <span class="ws-nowrap"><i class="fas fa-phone"></i> {{ setting('general.phone') }}</span>
+                                <span class="ws-nowrap"dir="ltr"><i class="fas fa-phone"></i> {{ setting('general.phone') }}</span>
                             </li>
                             <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-sm-show">
                                 <span class="ws-nowrap"><i class="fas fa-map-marker-alt"></i> 
@@ -74,7 +74,7 @@ data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEn
         </div>
     </div>
 </div>
-<div class="header-container container">
+<div class="header-container container"@if(app()->getLocale()=="ar") dir="rtl"@endif >
     <div class="header-row">
         <div class="header-column">
             <div class="header-row">
@@ -91,22 +91,18 @@ data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEn
                 <div class="header-nav header-nav-line header-nav-top-line header-nav-top-line-with-border order-2 order-lg-1">
                     <div class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
                         <nav class="collapse">
-                            <ul class="nav nav-pills" id="mainNav">
-                                <li class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle active" href="index.html">
-                                        Home
-                                    </a>
-                                </li>
-                                <li class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle active" href="index.html">
-                                            Home
-                                        </a>
-                                </li>
-                                <li class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle active" href="index.html">
-                                            Home
-                                        </a>
-                                </li>
+                            <ul class="nav nav-pills" id="mainNav" >
+
+                                    @foreach($items as $menu_item)
+                                        <li class="dropdown">
+                                            <a class="dropdown-item dropdown-toggle
+                                            @if(url($_SERVER['REQUEST_URI'])==url($menu_item->link().app()->getLocale())) active @endif "
+                                               href="{{$menu_item->link() }}" @if(app()->getLocale()=="ar") style="font-size: 16px;"@endif >
+                                                {{ $menu_item->translate(app()->getLocale())->title }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+
                             </ul>
                         </nav>
                     </div>

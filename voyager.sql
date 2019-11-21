@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2019 at 02:57 PM
+-- Generation Time: Nov 21, 2019 at 02:38 PM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -47,7 +47,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'ar', 'admin@admin.com', 'admins\\November2019\\SqlGB8mls8g5qHgGzcjG.png', NULL, '$2y$10$EHGhfYH2Q2yY2IW6j2zl0emo/Ap7CLcgBKPnb0gw7ILBhcGxy7EYS', 'PoJYDRGgbc81zG0vYESXHn55RUxIRmChJyhRfDVFMJvX1V0Dxe5PDYsNWHvv', '{\"locale\":\"ar\"}', '2019-11-10 07:05:44', '2019-11-14 05:42:04');
+(1, 1, 'Ahmed Tawfek', 'admin@admin.com', 'admins/November2019/ZUW4rrYvHOB3rmA0Omf9.jpg', NULL, '$2y$10$EHGhfYH2Q2yY2IW6j2zl0emo/Ap7CLcgBKPnb0gw7ILBhcGxy7EYS', 'PoJYDRGgbc81zG0vYESXHn55RUxIRmChJyhRfDVFMJvX1V0Dxe5PDYsNWHvv', '{\"locale\":\"ar\"}', '2019-11-10 07:05:44', '2019-11-20 12:55:59');
 
 -- --------------------------------------------------------
 
@@ -247,7 +247,8 @@ CREATE TABLE `menus` (
 --
 
 INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '2019-11-10 09:05:37', '2019-11-10 09:05:37');
+(1, 'admin', '2019-11-10 09:05:37', '2019-11-10 09:05:37'),
+(2, 'Site', '2019-11-18 07:39:13', '2019-11-18 07:39:13');
 
 -- --------------------------------------------------------
 
@@ -293,7 +294,13 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (15, 1, 'Admins', '', '_self', 'voyager-person', '#000000', 16, 1, '2019-11-11 05:35:32', '2019-11-11 06:34:30', 'voyager.admins.index', 'null'),
 (16, 1, 'All Users', '', '_self', 'voyager-people', '#000000', NULL, 3, '2019-11-11 06:33:43', '2019-11-14 06:38:29', NULL, ''),
 (17, 1, 'Site Settings', '', '_self', 'voyager-settings', '#000000', NULL, 2, '2019-11-11 06:43:15', '2019-11-11 06:44:48', NULL, ''),
-(18, 1, 'Slides', '', '_self', 'voyager-code', '#000000', 17, 2, '2019-11-11 07:14:20', '2019-11-14 06:39:57', 'voyager.slides.index', 'null');
+(18, 1, 'Slides', '', '_self', 'voyager-code', '#000000', 17, 2, '2019-11-11 07:14:20', '2019-11-14 06:39:57', 'voyager.slides.index', 'null'),
+(19, 2, 'Home', '/', '_self', NULL, '#000000', NULL, 1, '2019-11-18 07:40:28', '2019-11-21 09:45:23', NULL, ''),
+(20, 2, 'About Us', '/about', '_self', NULL, '#000000', NULL, 5, '2019-11-18 07:41:13', '2019-11-21 10:25:18', NULL, ''),
+(21, 2, 'Products', '/products', '_self', NULL, '#000000', NULL, 2, '2019-11-21 08:48:29', '2019-11-21 10:25:13', NULL, ''),
+(22, 2, 'Portfolio', 'portfolio', '_self', NULL, '#000000', NULL, 3, '2019-11-21 08:51:00', '2019-11-21 10:25:13', NULL, ''),
+(23, 2, 'Contact Us', '/contactus', '_self', NULL, '#000000', NULL, 6, '2019-11-21 08:51:52', '2019-11-21 10:25:18', NULL, ''),
+(24, 2, 'Certificate', '/certificate', '_self', NULL, '#000000', NULL, 4, '2019-11-21 09:49:41', '2019-11-21 10:25:18', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -624,11 +631,11 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (2, 'site.description', 'Site Description', 'Site Description', '', 'text', 2, 'Site'),
 (3, 'site.logo', 'Site Logo', '', '', 'image', 3, 'Site'),
 (4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', NULL, '', 'text', 4, 'Site'),
-(5, 'admin.bg_image', 'Admin Background Image', 'settings\\November2019\\8OeboYiPI7V7oWXdQAFx.jpg', '', 'image', 5, 'Admin'),
+(5, 'admin.bg_image', 'Admin Background Image', 'settings/November2019/iElwqtolgXNzcFYymfcc.jpg', '', 'image', 5, 'Admin'),
 (6, 'admin.title', 'Admin Title', 'Main Site', '', 'text', 1, 'Admin'),
 (7, 'admin.description', 'Admin Description', 'Welcome to Main Site.', '', 'text', 2, 'Admin'),
-(8, 'admin.loader', 'Admin Loader', 'settings\\November2019\\cvRfruT3mRrZa0h6tcbj.png', '', 'image', 3, 'Admin'),
-(9, 'admin.icon_image', 'Admin Icon Image', 'settings\\November2019\\RSrR0u6Xrs9jCU0m8tUl.png', '', 'image', 4, 'Admin'),
+(8, 'admin.loader', 'Admin Loader', 'settings/November2019/YBHDFEtqbybPVkPt5jjO.png', '', 'image', 3, 'Admin'),
+(9, 'admin.icon_image', 'Admin Icon Image', 'settings/November2019/V5e0MHWKzUheqJQBkYLj.png', '', 'image', 4, 'Admin'),
 (10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', '34843910000-5bmljtoi8na5ke95jgsk96bcmk8f8ks4.apps.googleusercontent.com', '', 'text', 1, 'Admin'),
 (12, 'general.address_ar', 'Address Arabic', 'القاهرة - مدينة نصر - الحي الثامن', NULL, 'text', 7, 'General'),
 (13, 'general.address_en', 'Address English', 'Cairo -Nasr City - Al Hayy Ath Thamin', NULL, 'text', 8, 'General'),
@@ -656,7 +663,7 @@ CREATE TABLE `slides` (
 --
 
 INSERT INTO `slides` (`id`, `title`, `body`, `img`, `created_at`, `updated_at`, `maintitle`) VALUES
-(3, 'asdasdasd', '<p>asdasdasd</p>', 'slides\\November2019\\fmbMc5TgWUTLtp6TYGVq.jpg', '2019-11-14 08:37:00', '2019-11-14 08:37:36', 'asdsda');
+(3, 'THE BEST DESIGN', '<div class=\"wpb_text_column wpb_content_element  lead\" style=\"box-sizing: border-box; margin-bottom: 35px; font-size: 1.25rem; font-weight: 300; line-height: 1.8rem; color: #777777; font-family: \'Open Sans\';\">\n<div class=\"wpb_wrapper\" style=\"box-sizing: border-box; margin-bottom: 0px;\">\n<p style=\"box-sizing: border-box; margin: 0px; line-height: 1.8rem; letter-spacing: 0px; text-align: center;\">&nbsp;</p>\n<p style=\"box-sizing: border-box; margin: 0px; line-height: 1.8rem; letter-spacing: 0px; text-align: center;\">&nbsp;</p>\n<p style=\"box-sizing: border-box; margin: 0px; line-height: 1.8rem; letter-spacing: 0px; text-align: center;\"><span style=\"box-sizing: border-box;\">Trusted by over 17,000 satisfied users, Porto is a huge success</span><br style=\"box-sizing: border-box;\" /><span style=\"box-sizing: border-box; margin-bottom: 0px;\">in the of one of the world&rsquo;s largest MarketPlace.</span></p>\n<p><span style=\"box-sizing: border-box; margin-bottom: 0px;\">&nbsp;</span></p>\n</div>\n</div>', 'slides/November2019/iA0yCeQ9hOgDWw9Lnqou.jpg', '2019-11-14 08:37:00', '2019-11-18 05:57:28', 'WE WORK HARD AND PORTO HAS');
 
 -- --------------------------------------------------------
 
@@ -773,9 +780,15 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 (103, 'categories', 'slug', 1, 'ar', 'category-1', '2019-11-11 11:19:03', '2019-11-11 11:19:03'),
 (104, 'categories', 'name', 1, 'ar', 'Category 1', '2019-11-11 11:19:03', '2019-11-11 11:19:03'),
 (108, 'data_rows', 'display_name', 75, 'ar', 'MainTitle', '2019-11-14 07:18:11', '2019-11-14 07:18:11'),
-(112, 'slides', 'maintitle', 3, 'ar', 'شسيشسيشس', '2019-11-14 08:37:36', '2019-11-14 08:37:36'),
-(113, 'slides', 'title', 3, 'ar', 'شسيشسي', '2019-11-14 08:37:36', '2019-11-14 08:37:36'),
-(114, 'slides', 'body', 3, 'ar', '<p>qweqwewqeشسيشسيشسيشسي</p>', '2019-11-14 08:37:37', '2019-11-14 08:37:37');
+(112, 'slides', 'maintitle', 3, 'ar', 'نحن نعمل بجد', '2019-11-14 08:37:36', '2019-11-17 17:51:45'),
+(113, 'slides', 'title', 3, 'ar', 'افضل اختيار', '2019-11-14 08:37:36', '2019-11-17 17:51:45'),
+(114, 'slides', 'body', 3, 'ar', '<p style=\"text-align: center;\">&nbsp;</p>\n<p style=\"text-align: center;\">&nbsp;</p>\n<p style=\"text-align: center;\">&nbsp; &nbsp;1700 لقد تم اختيارنا من ضمن</p>', '2019-11-14 08:37:37', '2019-11-17 17:53:17'),
+(115, 'menu_items', 'title', 19, 'ar', 'الصفحة الرئيسية', '2019-11-18 07:40:28', '2019-11-18 07:40:28'),
+(116, 'menu_items', 'title', 20, 'ar', 'عن الشركة', '2019-11-18 07:41:13', '2019-11-18 07:41:13'),
+(117, 'menu_items', 'title', 21, 'ar', 'المنتجات', '2019-11-21 08:48:29', '2019-11-21 08:48:29'),
+(118, 'menu_items', 'title', 22, 'ar', 'سابقة الاعمال', '2019-11-21 08:51:00', '2019-11-21 08:51:00'),
+(119, 'menu_items', 'title', 23, 'ar', 'اتصل بنا', '2019-11-21 08:51:52', '2019-11-21 08:51:52'),
+(120, 'menu_items', 'title', 24, 'ar', 'الشهادات', '2019-11-21 09:49:41', '2019-11-21 09:49:41');
 
 -- --------------------------------------------------------
 
@@ -979,13 +992,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1033,7 +1046,7 @@ ALTER TABLE `slides`
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `users`
