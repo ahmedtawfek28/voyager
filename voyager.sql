@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2019 at 02:38 PM
+-- Generation Time: Nov 24, 2019 at 05:14 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -47,7 +47,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Ahmed Tawfek', 'admin@admin.com', 'admins/November2019/ZUW4rrYvHOB3rmA0Omf9.jpg', NULL, '$2y$10$EHGhfYH2Q2yY2IW6j2zl0emo/Ap7CLcgBKPnb0gw7ILBhcGxy7EYS', 'PoJYDRGgbc81zG0vYESXHn55RUxIRmChJyhRfDVFMJvX1V0Dxe5PDYsNWHvv', '{\"locale\":\"ar\"}', '2019-11-10 07:05:44', '2019-11-20 12:55:59');
+(1, 1, 'Ahmed Tawfek', 'admin@admin.com', 'admins/November2019/ZUW4rrYvHOB3rmA0Omf9.jpg', NULL, '$2y$10$EHGhfYH2Q2yY2IW6j2zl0emo/Ap7CLcgBKPnb0gw7ILBhcGxy7EYS', 'PoJYDRGgbc81zG0vYESXHn55RUxIRmChJyhRfDVFMJvX1V0Dxe5PDYsNWHvv', '{\"locale\":\"en\"}', '2019-11-10 07:05:44', '2019-11-22 12:28:22');
 
 -- --------------------------------------------------------
 
@@ -174,7 +174,13 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (72, 10, 'img', 'image', 'Img', 0, 1, 1, 1, 1, 1, '{}', 5),
 (73, 10, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 6),
 (74, 10, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
-(75, 10, 'maintitle', 'text', 'MainTitle', 0, 1, 1, 1, 1, 1, '{}', 2);
+(75, 10, 'maintitle', 'text', 'MainTitle', 0, 1, 1, 1, 1, 1, '{}', 2),
+(76, 11, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(77, 11, 'icon', 'text', 'Icon', 0, 1, 1, 1, 1, 1, '{}', 2),
+(78, 11, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 3),
+(79, 11, 'body', 'rich_text_box', 'Body', 0, 0, 1, 1, 1, 1, '{}', 4),
+(80, 11, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
+(81, 11, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6);
 
 -- --------------------------------------------------------
 
@@ -212,7 +218,8 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2019-11-10 09:05:44', '2019-11-10 09:05:44'),
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2019-11-10 09:05:45', '2019-11-10 09:05:45'),
 (9, 'admins', 'admins', 'Admin', 'Admins', 'voyager-person', 'App\\Admin', 'TCG\\Voyager\\Policies\\UserPolicy', 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2019-11-11 05:35:32', '2019-11-11 06:36:14'),
-(10, 'slides', 'slides', 'Slide', 'Slides', 'voyager-code', 'App\\Slide', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2019-11-11 07:14:20', '2019-11-14 07:23:17');
+(10, 'slides', 'slides', 'Slide', 'Slides', 'voyager-code', 'App\\Slide', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2019-11-11 07:14:20', '2019-11-14 07:23:17'),
+(11, 'features', 'features', 'Feature', 'Features', 'voyager-paperclip', 'App\\Feature', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2019-11-23 11:02:12', '2019-11-23 11:02:12');
 
 -- --------------------------------------------------------
 
@@ -228,6 +235,28 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `features`
+--
+
+CREATE TABLE `features` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `icon` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `features`
+--
+
+INSERT INTO `features` (`id`, `icon`, `title`, `body`, `created_at`, `updated_at`) VALUES
+(1, 'icons icon-layers', 'Sliders_1', '<p><br style=\"box-sizing: border-box; color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\" /><span style=\"color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\">&bull; Infrastructure for information technology evaluation.</span><br style=\"box-sizing: border-box; color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\" /><span style=\"color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\">&bull; Design and implementation of wired and wireless networks.</span><br style=\"box-sizing: border-box; color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\" /><span style=\"color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\">&bull; Protection and Firewall network security systems.</span><br style=\"box-sizing: border-box; color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\" /><span style=\"color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\">&bull; Design and implementation of information centers Data Center.</span><br style=\"box-sizing: border-box; color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\" /><span style=\"color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\">&bull; Internal PABX buildings, offices and businesses.</span><br style=\"box-sizing: border-box; color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\" /><span style=\"color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\">&bull; Software design (sales - purchases &ndash; Caf&eacute; &amp; Restaurant - accounts medical programs).</span><br style=\"box-sizing: border-box; color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\" /><span style=\"color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\">&bull; Network management services.</span><br style=\"box-sizing: border-box; color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\" /><span style=\"color: #777777; font-family: \'Open Sans\', Arial, sans-serif;\">&bull; Internet service by satellite.</span></p>', '2019-11-23 11:12:00', '2019-11-23 11:14:34');
 
 -- --------------------------------------------------------
 
@@ -278,21 +307,21 @@ CREATE TABLE `menu_items` (
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1, 1, 'Dashboard', '', '_self', 'voyager-dashboard', '#000000', NULL, 1, '2019-11-10 09:05:37', '2019-11-10 09:19:52', 'voyager.dashboard', 'null'),
-(2, 1, 'Media', '', '_self', 'voyager-images', '#000000', NULL, 5, '2019-11-10 09:05:37', '2019-11-14 06:38:29', 'voyager.media.index', 'null'),
+(2, 1, 'Media', '', '_self', 'voyager-images', '#000000', NULL, 5, '2019-11-10 09:05:37', '2019-11-23 11:02:49', 'voyager.media.index', 'null'),
 (3, 1, 'Users', '', '_self', 'voyager-person', '#000000', 16, 2, '2019-11-10 09:05:37', '2019-11-11 06:34:16', 'voyager.users.index', 'null'),
-(4, 1, 'Roles', '', '_self', 'voyager-lock', '#000000', NULL, 4, '2019-11-10 09:05:37', '2019-11-14 06:38:29', 'voyager.roles.index', 'null'),
-(5, 1, 'Tools', '', '_self', 'voyager-tools', '#000000', NULL, 9, '2019-11-10 09:05:37', '2019-11-14 06:38:29', NULL, ''),
+(4, 1, 'Roles', '', '_self', 'voyager-lock', '#000000', NULL, 4, '2019-11-10 09:05:37', '2019-11-23 11:02:49', 'voyager.roles.index', 'null'),
+(5, 1, 'Tools', '', '_self', 'voyager-tools', '#000000', NULL, 9, '2019-11-10 09:05:37', '2019-11-23 11:02:49', NULL, ''),
 (6, 1, 'Menu Builder', '', '_self', 'voyager-list', '#000000', 5, 1, '2019-11-10 09:05:37', '2019-11-10 09:39:35', 'voyager.menus.index', 'null'),
 (7, 1, 'Database', '', '_self', 'voyager-data', '#000000', 5, 2, '2019-11-10 09:05:37', '2019-11-10 09:39:54', 'voyager.database.index', 'null'),
 (8, 1, 'Compass', '', '_self', 'voyager-compass', '#000000', 5, 3, '2019-11-10 09:05:37', '2019-11-10 09:40:33', 'voyager.compass.index', 'null'),
 (9, 1, 'BREAD', '', '_self', 'voyager-bread', '#000000', 5, 4, '2019-11-10 09:05:37', '2019-11-10 09:40:51', 'voyager.bread.index', 'null'),
 (10, 1, 'Settings', '', '_self', 'voyager-settings', '#000000', 17, 1, '2019-11-10 09:05:37', '2019-11-11 06:45:19', 'voyager.settings.index', 'null'),
-(11, 1, 'Categories', '', '_self', 'voyager-categories', '#000000', NULL, 6, '2019-11-10 09:05:43', '2019-11-14 06:38:29', 'voyager.categories.index', 'null'),
-(12, 1, 'Posts', '', '_self', 'voyager-news', '#000000', NULL, 7, '2019-11-10 09:05:44', '2019-11-14 06:38:29', 'voyager.posts.index', 'null'),
-(13, 1, 'Pages', '', '_self', 'voyager-file-text', '#000000', NULL, 8, '2019-11-10 09:05:46', '2019-11-14 06:38:29', 'voyager.pages.index', 'null'),
+(11, 1, 'Categories', '', '_self', 'voyager-categories', '#000000', NULL, 6, '2019-11-10 09:05:43', '2019-11-23 11:02:49', 'voyager.categories.index', 'null'),
+(12, 1, 'Posts', '', '_self', 'voyager-news', '#000000', NULL, 7, '2019-11-10 09:05:44', '2019-11-23 11:02:49', 'voyager.posts.index', 'null'),
+(13, 1, 'Pages', '', '_self', 'voyager-file-text', '#000000', NULL, 8, '2019-11-10 09:05:46', '2019-11-23 11:02:49', 'voyager.pages.index', 'null'),
 (14, 1, 'Hooks', '', '_self', 'voyager-hook', '#000000', 5, 5, '2019-11-10 09:05:48', '2019-11-10 09:41:04', 'voyager.hooks', 'null'),
 (15, 1, 'Admins', '', '_self', 'voyager-person', '#000000', 16, 1, '2019-11-11 05:35:32', '2019-11-11 06:34:30', 'voyager.admins.index', 'null'),
-(16, 1, 'All Users', '', '_self', 'voyager-people', '#000000', NULL, 3, '2019-11-11 06:33:43', '2019-11-14 06:38:29', NULL, ''),
+(16, 1, 'All Users', '', '_self', 'voyager-people', '#000000', NULL, 3, '2019-11-11 06:33:43', '2019-11-23 11:02:49', NULL, ''),
 (17, 1, 'Site Settings', '', '_self', 'voyager-settings', '#000000', NULL, 2, '2019-11-11 06:43:15', '2019-11-11 06:44:48', NULL, ''),
 (18, 1, 'Slides', '', '_self', 'voyager-code', '#000000', 17, 2, '2019-11-11 07:14:20', '2019-11-14 06:39:57', 'voyager.slides.index', 'null'),
 (19, 2, 'Home', '/', '_self', NULL, '#000000', NULL, 1, '2019-11-18 07:40:28', '2019-11-21 09:45:23', NULL, ''),
@@ -300,7 +329,8 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (21, 2, 'Products', '/products', '_self', NULL, '#000000', NULL, 2, '2019-11-21 08:48:29', '2019-11-21 10:25:13', NULL, ''),
 (22, 2, 'Portfolio', 'portfolio', '_self', NULL, '#000000', NULL, 3, '2019-11-21 08:51:00', '2019-11-21 10:25:13', NULL, ''),
 (23, 2, 'Contact Us', '/contactus', '_self', NULL, '#000000', NULL, 6, '2019-11-21 08:51:52', '2019-11-21 10:25:18', NULL, ''),
-(24, 2, 'Certificate', '/certificate', '_self', NULL, '#000000', NULL, 4, '2019-11-21 09:49:41', '2019-11-21 10:25:18', NULL, '');
+(24, 2, 'Certificate', '/certificate', '_self', NULL, '#000000', NULL, 4, '2019-11-21 09:49:41', '2019-11-21 10:25:18', NULL, ''),
+(25, 1, 'Features', '', '_self', 'voyager-paperclip', '#000000', 17, 3, '2019-11-23 11:02:13', '2019-11-23 11:03:42', 'voyager.features.index', 'null');
 
 -- --------------------------------------------------------
 
@@ -456,7 +486,12 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (48, 'read_slides', 'slides', '2019-11-11 07:14:20', '2019-11-11 07:14:20'),
 (49, 'edit_slides', 'slides', '2019-11-11 07:14:20', '2019-11-11 07:14:20'),
 (50, 'add_slides', 'slides', '2019-11-11 07:14:20', '2019-11-11 07:14:20'),
-(51, 'delete_slides', 'slides', '2019-11-11 07:14:20', '2019-11-11 07:14:20');
+(51, 'delete_slides', 'slides', '2019-11-11 07:14:20', '2019-11-11 07:14:20'),
+(52, 'browse_features', 'features', '2019-11-23 11:02:13', '2019-11-23 11:02:13'),
+(53, 'read_features', 'features', '2019-11-23 11:02:13', '2019-11-23 11:02:13'),
+(54, 'edit_features', 'features', '2019-11-23 11:02:13', '2019-11-23 11:02:13'),
+(55, 'add_features', 'features', '2019-11-23 11:02:13', '2019-11-23 11:02:13'),
+(56, 'delete_features', 'features', '2019-11-23 11:02:13', '2019-11-23 11:02:13');
 
 -- --------------------------------------------------------
 
@@ -547,7 +582,12 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (48, 1),
 (49, 1),
 (50, 1),
-(51, 1);
+(51, 1),
+(52, 1),
+(53, 1),
+(54, 1),
+(55, 1),
+(56, 1);
 
 -- --------------------------------------------------------
 
@@ -630,7 +670,6 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (1, 'site.title', 'Site Title', 'Site Title', '', 'text', 1, 'Site'),
 (2, 'site.description', 'Site Description', 'Site Description', '', 'text', 2, 'Site'),
 (3, 'site.logo', 'Site Logo', '', '', 'image', 3, 'Site'),
-(4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', NULL, '', 'text', 4, 'Site'),
 (5, 'admin.bg_image', 'Admin Background Image', 'settings/November2019/iElwqtolgXNzcFYymfcc.jpg', '', 'image', 5, 'Admin'),
 (6, 'admin.title', 'Admin Title', 'Main Site', '', 'text', 1, 'Admin'),
 (7, 'admin.description', 'Admin Description', 'Welcome to Main Site.', '', 'text', 2, 'Admin'),
@@ -640,7 +679,17 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (12, 'general.address_ar', 'Address Arabic', 'القاهرة - مدينة نصر - الحي الثامن', NULL, 'text', 7, 'General'),
 (13, 'general.address_en', 'Address English', 'Cairo -Nasr City - Al Hayy Ath Thamin', NULL, 'text', 8, 'General'),
 (14, 'general.phone', 'phone', '+20 112 6697 538', NULL, 'text', 9, 'General'),
-(15, 'general.facebook', 'FaceBook', NULL, NULL, 'text', 10, 'General');
+(15, 'general.facebook', 'FaceBook', NULL, NULL, 'text', 10, 'General'),
+(16, 'home.word-rotator-words', 'word Rotator Words', 'Porter is |incredibly|especially|extremely|beautiful and fully responsive.', NULL, 'text', 11, 'home'),
+(18, 'home.word-rotator-words-ar', 'word Rotator Words Ar', 'بورتر تعتبر |الافضل|الاسهل|الاسرع|الاغلي| ويوجد بها مميزات اكثر', NULL, 'text', 13, 'home'),
+(19, 'home.word-rotator-details', 'word Rotator Details', 'explained had ought two she ample can met shoud said bad i Prepared By wholly fat Written there then dependent as remarkably for position many in though in', NULL, 'text_area', 12, 'home'),
+(20, 'home.word-rotator-details-ar', 'word Rotator Details Ar', 'استبدال ويحتوي فعل وعلى وشعور لاتخاذ يلا خلاف المنطقة صورة دول الثورات يكشف خدمة ثالثا في تبيع أن حساب واللى الإسلامية الإنسان وذلك واجتماعيا انت إثر الثورة مناطق لأنهم وتأثير الفلسطينية العربي في المنطقة أهم والاقتصادية', NULL, 'text_area', 14, 'home'),
+(21, 'home.Strategy', 'Strategy', 'settings\\November2019\\7Omg4PJyCrfQ5byEcRKg.png', NULL, 'image', 15, 'home'),
+(22, 'home.Planning', 'Planning', 'settings\\November2019\\uRQatibMisq0yQsgIlVQ.png', NULL, 'image', 16, 'home'),
+(23, 'home.Build', 'Build', 'settings\\November2019\\w9JJMBldUF9DLgNz60ZB.png', NULL, 'image', 17, 'home'),
+(24, 'home.Our_Work_1', 'Our Work 1', 'settings\\November2019\\jHheNzGNYOZov77H2yLG.jpg', NULL, 'image', 18, 'home'),
+(25, 'home.Our_Work_2', 'Our Work 2', 'settings\\November2019\\CL1InMBm6v8PGvgXok5n.jpg', NULL, 'image', 19, 'home'),
+(26, 'home.Our_Work_3', 'Our Work 3', 'settings\\November2019\\jTsIMhL75HVfsAmefgEj.jpg', NULL, 'image', 20, 'home');
 
 -- --------------------------------------------------------
 
@@ -788,7 +837,10 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 (117, 'menu_items', 'title', 21, 'ar', 'المنتجات', '2019-11-21 08:48:29', '2019-11-21 08:48:29'),
 (118, 'menu_items', 'title', 22, 'ar', 'سابقة الاعمال', '2019-11-21 08:51:00', '2019-11-21 08:51:00'),
 (119, 'menu_items', 'title', 23, 'ar', 'اتصل بنا', '2019-11-21 08:51:52', '2019-11-21 08:51:52'),
-(120, 'menu_items', 'title', 24, 'ar', 'الشهادات', '2019-11-21 09:49:41', '2019-11-21 09:49:41');
+(120, 'menu_items', 'title', 24, 'ar', 'الشهادات', '2019-11-21 09:49:41', '2019-11-21 09:49:41'),
+(121, 'menu_items', 'title', 25, 'ar', 'خدماتنا', '2019-11-23 11:03:42', '2019-11-23 11:03:42'),
+(122, 'features', 'title', 1, 'ar', 'الشريحة الاولي', '2019-11-23 11:14:35', '2019-11-23 11:14:35'),
+(123, 'features', 'body', 1, 'ar', '<ul>\n<li style=\"text-align: right;\">ما مش مصر التحديات تتهم اذا الإسلاميين على أول عايز وسوريا من أكبر ولكنها من هو كنتم حماية يصعب في سوريا أيضا</li>\n<li style=\"text-align: right;\">في العربية مبادئ صعود الفلسطينية عن يعد بخصوص تقدم سوريا</li>\n<li style=\"text-align: right;\">وسياساتها إسرائيل العربية السعودية الإرهاب يتم هى عجلة أميركا</li>\n<li style=\"text-align: right;\">للإمارات العلاقات عن تصورات نظام عقل أبحاث العربي اتجاه قد</li>\n<li style=\"text-align: right;\">اقل الإنسان وهما أيضا بدأت أهم ولا تؤثر على تكون والإسلاميون فالتقرير</li>\n<li style=\"text-align: right;\">أكثر البحرين عنها الدول يكتب جديدة والتعامل</li>\n</ul>', '2019-11-23 11:14:35', '2019-11-23 11:14:35');
 
 -- --------------------------------------------------------
 
@@ -860,6 +912,12 @@ ALTER TABLE `data_types`
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `features`
+--
+ALTER TABLE `features`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -974,19 +1032,25 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `features`
+--
+ALTER TABLE `features`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `menus`
@@ -998,7 +1062,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1016,7 +1080,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -1034,7 +1098,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `slides`
@@ -1046,7 +1110,7 @@ ALTER TABLE `slides`
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `users`
