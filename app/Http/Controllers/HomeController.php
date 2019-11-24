@@ -36,8 +36,8 @@ class HomeController extends Controller
         }
 
         //        ------------------------rotator Words --------------------------------------
-        $sliders = Slide::withTranslation(App::getLocale())->get();
-        return view('welcome', compact('sliders', 'items', 'first_words', 'mid_words', 'last_words'));
+        $features = Feature::withTranslation(App::getLocale())->get();
+        return view('welcome', compact('sliders', 'items', 'first_words', 'mid_words', 'last_words','features'));
     }
 
 }
