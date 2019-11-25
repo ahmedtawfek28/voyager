@@ -7,5 +7,6 @@ return [
     'our_work'              => 'Our Work',
     'our'              => 'Our',
     'features'              => 'Features',
+    'clients'              => 'Clients',
 
 ];

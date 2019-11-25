@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\MenuItem;
 use App\Slide;
+use App\Feature;
 use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller

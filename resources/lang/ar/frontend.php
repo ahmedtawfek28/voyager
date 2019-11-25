@@ -6,6 +6,6 @@ return [
     'build'              => 'بناء',
     'our_work'              => 'اعمالنا',
     'features'              => 'خدماتنا',
-
+    'clients'              => 'عملائنا',
 
 ];
