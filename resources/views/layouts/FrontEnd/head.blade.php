@@ -49,5 +49,7 @@
 
     <!-- Head Libs -->
     <script src="{{ asset('FrontEnd/vendor/modernizr/modernizr.min.js') }}"></script>
-
+<style>.testimonial blockquote:before {
+        right: 22px;}
+</style>
 </head>

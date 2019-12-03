@@ -7,5 +7,9 @@ return [
     'our_work'              => 'اعمالنا',
     'features'              => 'خدماتنا',
     'clients'              => 'عملائنا',
+    'partners'              => 'شركائنا',
+    'what'              => 'أراء',
+    'clients_say'              => 'عملائنا',
+    'contact_us'              => 'للتواصل  معنا',
 
 ];

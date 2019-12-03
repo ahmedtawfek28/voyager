@@ -34,37 +34,6 @@
         </div>
 
     </div>
-    <hr class="solid my-5">
-
-    <h2 class="font-weight-normal text-7" style="text-align: center;">@if(app()->getLocale()=="en") {{ trans('frontend.our') }}  @endif
-        <strong class="font-weight-extra-bold">{{ trans('frontend.clients') }}</strong>
-    </h2>
-    <div class="row text-center mt-5">
-        <div class="owl-carousel owl-theme carousel-center-active-item"
-             data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 1}, '768': {'items': 5}, '992': {'items': 7}, '1200': {'items': 7}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': false}">
-            <div>
-                <img class="img-fluid" src="{{ asset('FrontEnd/img/logos/logo-1.png') }}" alt="">
-            </div>
-            <div>
-                <img class="img-fluid" src="{{ asset('FrontEnd/img/logos/logo-2.png') }}" alt="">
-            </div>
-            <div>
-                <img class="img-fluid" src="{{ asset('FrontEnd/img/logos/logo-3.png') }}" alt="">
-            </div>
-            <div>
-                <img class="img-fluid" src="{{ asset('FrontEnd/img/logos/logo-4.png') }}" alt="">
-            </div>
-            <div>
-                <img class="img-fluid" src="{{ asset('FrontEnd/img/logos/logo-5.png') }}" alt="">
-            </div>
-            <div>
-                <img class="img-fluid" src="{{ asset('FrontEnd/img/logos/logo-6.png') }}" alt="">
-            </div>
-            <div>
-                <img class="img-fluid" src="{{ asset('FrontEnd/img/logos/logo-7.png') }}" alt="">
-            </div>
-
-        </div>
-    </div>
-
+    @include('layouts.FrontEnd.our_clients')
+    @include('layouts.FrontEnd.our_partners')
 </div>

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\ClientComment;
 use App\MenuItem;
+use App\OurClient;
+use App\OurPartner;
 use App\Slide;
 use App\Feature;
 use Illuminate\Support\Facades\App;
@@ -38,7 +41,11 @@ class HomeController extends Controller
 
         //        ------------------------rotator Words --------------------------------------
         $features = Feature::withTranslation(App::getLocale())->get();
-        return view('welcome', compact('sliders', 'items', 'first_words', 'mid_words', 'last_words','features'));
+        $our_clients = OurClient::get();
+        $our_partners = OurPartner::get();
+        $client_comments = ClientComment::withTranslation(App::getLocale())->get();
+
+        return view('welcome', compact('client_comments','our_partners','our_clients','sliders', 'items', 'first_words', 'mid_words', 'last_words','features'));
     }
 
 }
