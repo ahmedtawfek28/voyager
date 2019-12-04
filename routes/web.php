@@ -150,7 +150,7 @@ Route::group(['prefix' => 'admin'], function () {
             });
 
             // Database Routes
-            Route::resource('database', $namespacePrefix.'VoyagerDatabaseController');
+            Route::resource('database','VoyagerDatabaseController');
 
             // Compass Routes
             Route::group([
