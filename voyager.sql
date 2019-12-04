@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2019 at 12:23 PM
+-- Generation Time: Dec 04, 2019 at 06:08 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -72,6 +72,29 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (1, NULL, 1, 'Category 1', 'category-1', '2019-11-10 09:05:44', '2019-11-10 09:05:44'),
 (2, NULL, 1, 'Category 2', 'category-2', '2019-11-10 09:05:44', '2019-11-10 09:05:44');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `client_comments`
+--
+
+CREATE TABLE `client_comments` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `jop` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `comment` longtext COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `client_comments`
+--
+
+INSERT INTO `client_comments` (`id`, `name`, `jop`, `comment`, `created_at`, `updated_at`) VALUES
+(1, 'Ahmed Tawfek', 'Manager Of Elgzawy ', 'this is the best website ever ', '2019-11-25 10:53:46', '2019-11-25 10:53:46'),
+(2, 'Mohamed Shaban', 'Manager of Safelife Company', 'this system is the best ever', '2019-11-25 10:59:32', '2019-11-25 10:59:32');
 
 -- --------------------------------------------------------
 
@@ -180,7 +203,23 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (78, 11, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 3),
 (79, 11, 'body', 'rich_text_box', 'Body', 0, 0, 1, 1, 1, 1, '{}', 4),
 (80, 11, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
-(81, 11, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6);
+(81, 11, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(87, 13, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(88, 13, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
+(89, 13, 'img', 'image', 'Img', 0, 1, 1, 1, 1, 1, '{}', 3),
+(90, 13, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
+(91, 13, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(92, 14, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(93, 14, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, '{}', 2),
+(94, 14, 'img', 'image', 'Img', 0, 1, 1, 1, 1, 1, '{}', 3),
+(95, 14, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
+(96, 14, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(97, 15, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(98, 15, 'name', 'text', 'Name', 0, 1, 1, 1, 1, 1, '{}', 2),
+(99, 15, 'jop', 'text', 'Jop', 0, 1, 1, 1, 1, 1, '{}', 3),
+(100, 15, 'comment', 'text_area', 'Comment', 0, 1, 1, 1, 1, 1, '{}', 4),
+(101, 15, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
+(102, 15, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6);
 
 -- --------------------------------------------------------
 
@@ -219,7 +258,10 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2019-11-10 09:05:45', '2019-11-10 09:05:45'),
 (9, 'admins', 'admins', 'Admin', 'Admins', 'voyager-person', 'App\\Admin', 'TCG\\Voyager\\Policies\\UserPolicy', 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2019-11-11 05:35:32', '2019-11-11 06:36:14'),
 (10, 'slides', 'slides', 'Slide', 'Slides', 'voyager-code', 'App\\Slide', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2019-11-11 07:14:20', '2019-11-14 07:23:17'),
-(11, 'features', 'features', 'Feature', 'Features', 'voyager-paperclip', 'App\\Feature', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2019-11-23 11:02:12', '2019-11-23 11:02:12');
+(11, 'features', 'features', 'Feature', 'Features', 'voyager-paperclip', 'App\\Feature', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2019-11-23 11:02:12', '2019-11-23 11:02:12'),
+(13, 'our_clients', 'our-clients', 'Our Client', 'Our Clients', NULL, 'App\\OurClient', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2019-11-25 09:51:12', '2019-11-25 09:51:12'),
+(14, 'our_partners', 'our-partners', 'Our Partner', 'Our Partners', NULL, 'App\\OurPartner', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2019-11-25 09:51:27', '2019-11-25 09:51:27'),
+(15, 'client_comments', 'client-comments', 'Client Comment', 'Client Comments', NULL, 'App\\ClientComment', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2019-11-25 10:41:29', '2019-11-25 10:52:27');
 
 -- --------------------------------------------------------
 
@@ -309,21 +351,21 @@ CREATE TABLE `menu_items` (
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1, 1, 'Dashboard', '', '_self', 'voyager-dashboard', '#000000', NULL, 1, '2019-11-10 09:05:37', '2019-11-10 09:19:52', 'voyager.dashboard', 'null'),
-(2, 1, 'Media', '', '_self', 'voyager-images', '#000000', NULL, 5, '2019-11-10 09:05:37', '2019-11-23 11:02:49', 'voyager.media.index', 'null'),
+(2, 1, 'Media', '', '_self', 'voyager-images', '#000000', NULL, 5, '2019-11-10 09:05:37', '2019-11-25 10:50:00', 'voyager.media.index', 'null'),
 (3, 1, 'Users', '', '_self', 'voyager-person', '#000000', 16, 2, '2019-11-10 09:05:37', '2019-11-11 06:34:16', 'voyager.users.index', 'null'),
-(4, 1, 'Roles', '', '_self', 'voyager-lock', '#000000', NULL, 4, '2019-11-10 09:05:37', '2019-11-23 11:02:49', 'voyager.roles.index', 'null'),
-(5, 1, 'Tools', '', '_self', 'voyager-tools', '#000000', NULL, 9, '2019-11-10 09:05:37', '2019-11-23 11:02:49', NULL, ''),
+(4, 1, 'Roles', '', '_self', 'voyager-lock', '#000000', NULL, 4, '2019-11-10 09:05:37', '2019-11-25 10:50:00', 'voyager.roles.index', 'null'),
+(5, 1, 'Tools', '', '_self', 'voyager-tools', '#000000', NULL, 9, '2019-11-10 09:05:37', '2019-11-25 10:50:01', NULL, ''),
 (6, 1, 'Menu Builder', '', '_self', 'voyager-list', '#000000', 5, 1, '2019-11-10 09:05:37', '2019-11-10 09:39:35', 'voyager.menus.index', 'null'),
 (7, 1, 'Database', '', '_self', 'voyager-data', '#000000', 5, 2, '2019-11-10 09:05:37', '2019-11-10 09:39:54', 'voyager.database.index', 'null'),
 (8, 1, 'Compass', '', '_self', 'voyager-compass', '#000000', 5, 3, '2019-11-10 09:05:37', '2019-11-10 09:40:33', 'voyager.compass.index', 'null'),
 (9, 1, 'BREAD', '', '_self', 'voyager-bread', '#000000', 5, 4, '2019-11-10 09:05:37', '2019-11-10 09:40:51', 'voyager.bread.index', 'null'),
 (10, 1, 'Settings', '', '_self', 'voyager-settings', '#000000', 17, 1, '2019-11-10 09:05:37', '2019-11-11 06:45:19', 'voyager.settings.index', 'null'),
-(11, 1, 'Categories', '', '_self', 'voyager-categories', '#000000', NULL, 6, '2019-11-10 09:05:43', '2019-11-23 11:02:49', 'voyager.categories.index', 'null'),
-(12, 1, 'Posts', '', '_self', 'voyager-news', '#000000', NULL, 7, '2019-11-10 09:05:44', '2019-11-23 11:02:49', 'voyager.posts.index', 'null'),
-(13, 1, 'Pages', '', '_self', 'voyager-file-text', '#000000', NULL, 8, '2019-11-10 09:05:46', '2019-11-23 11:02:49', 'voyager.pages.index', 'null'),
+(11, 1, 'Categories', '', '_self', 'voyager-categories', '#000000', NULL, 6, '2019-11-10 09:05:43', '2019-11-25 10:50:00', 'voyager.categories.index', 'null'),
+(12, 1, 'Posts', '', '_self', 'voyager-news', '#000000', NULL, 7, '2019-11-10 09:05:44', '2019-11-25 10:50:00', 'voyager.posts.index', 'null'),
+(13, 1, 'Pages', '', '_self', 'voyager-file-text', '#000000', NULL, 8, '2019-11-10 09:05:46', '2019-11-25 10:50:01', 'voyager.pages.index', 'null'),
 (14, 1, 'Hooks', '', '_self', 'voyager-hook', '#000000', 5, 5, '2019-11-10 09:05:48', '2019-11-10 09:41:04', 'voyager.hooks', 'null'),
 (15, 1, 'Admins', '', '_self', 'voyager-person', '#000000', 16, 1, '2019-11-11 05:35:32', '2019-11-11 06:34:30', 'voyager.admins.index', 'null'),
-(16, 1, 'All Users', '', '_self', 'voyager-people', '#000000', NULL, 3, '2019-11-11 06:33:43', '2019-11-23 11:02:49', NULL, ''),
+(16, 1, 'All Users', '', '_self', 'voyager-people', '#000000', NULL, 3, '2019-11-11 06:33:43', '2019-11-25 10:50:00', NULL, ''),
 (17, 1, 'Site Settings', '', '_self', 'voyager-settings', '#000000', NULL, 2, '2019-11-11 06:43:15', '2019-11-11 06:44:48', NULL, ''),
 (18, 1, 'Slides', '', '_self', 'voyager-code', '#000000', 17, 2, '2019-11-11 07:14:20', '2019-11-14 06:39:57', 'voyager.slides.index', 'null'),
 (19, 2, 'Home', '/', '_self', NULL, '#000000', NULL, 1, '2019-11-18 07:40:28', '2019-11-21 09:45:23', NULL, ''),
@@ -332,7 +374,10 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (22, 2, 'Portfolio', 'portfolio', '_self', NULL, '#000000', NULL, 3, '2019-11-21 08:51:00', '2019-11-21 10:25:13', NULL, ''),
 (23, 2, 'Contact Us', '/contactus', '_self', NULL, '#000000', NULL, 6, '2019-11-21 08:51:52', '2019-11-21 10:25:18', NULL, ''),
 (24, 2, 'Certificate', '/certificate', '_self', NULL, '#000000', NULL, 4, '2019-11-21 09:49:41', '2019-11-21 10:25:18', NULL, ''),
-(25, 1, 'Features', '', '_self', 'voyager-paperclip', '#000000', 17, 3, '2019-11-23 11:02:13', '2019-11-23 11:03:42', 'voyager.features.index', 'null');
+(25, 1, 'Features', '', '_self', 'voyager-paperclip', '#000000', 17, 3, '2019-11-23 11:02:13', '2019-11-23 11:03:42', 'voyager.features.index', 'null'),
+(27, 1, 'Our Clients', '', '_self', 'voyager-credit-cards', '#000000', 17, 4, '2019-11-25 09:51:12', '2019-11-25 09:53:32', 'voyager.our-clients.index', 'null'),
+(28, 1, 'Our Partners', '', '_self', 'voyager-person', '#000000', 17, 5, '2019-11-25 09:51:28', '2019-11-25 09:54:36', 'voyager.our-partners.index', 'null'),
+(29, 1, 'Client Comments', '', '_self', 'voyager-chat', '#000000', 17, 6, '2019-11-25 10:41:30', '2019-11-25 10:50:46', 'voyager.client-comments.index', 'null');
 
 -- --------------------------------------------------------
 
@@ -378,6 +423,59 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (25, '2016_01_01_000000_create_posts_table', 2),
 (26, '2016_02_15_204651_create_categories_table', 2),
 (27, '2017_04_11_000000_alter_post_nullable_fields_table', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `our_clients`
+--
+
+CREATE TABLE `our_clients` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `img` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `our_clients`
+--
+
+INSERT INTO `our_clients` (`id`, `title`, `img`, `created_at`, `updated_at`) VALUES
+(1, 'Google', 'our-clients\\November2019\\J5oO34RxdSWoxRB8ZVhH.png', '2019-11-25 09:55:00', '2019-11-25 09:55:00'),
+(2, 'Spo', 'our-clients\\November2019\\dz35aG3JzfJQngvKIIRr.png', '2019-11-25 09:55:19', '2019-11-25 09:55:19'),
+(3, 'saaa', 'our-clients\\November2019\\4ebhuTZoJwaW15MJmaBY.png', '2019-11-25 09:55:31', '2019-11-25 09:55:31'),
+(4, 'envato', 'our-clients\\November2019\\LVb1Ch5lJmAXTCnNRVSk.png', '2019-11-25 09:55:47', '2019-11-25 09:55:47'),
+(5, 'less', 'our-clients\\November2019\\JPoOiNjT98Gfc7CAtoos.png', '2019-11-25 09:55:58', '2019-11-25 09:55:58'),
+(6, 'WP', 'our-clients\\November2019\\iZh5hASCtU5lNdAaszHW.png', '2019-11-25 09:56:13', '2019-11-25 09:56:13'),
+(7, 'jquery', 'our-clients\\November2019\\U1puGlhoJio6JfegUcaK.png', '2019-11-25 09:56:26', '2019-11-25 09:56:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `our_partners`
+--
+
+CREATE TABLE `our_partners` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `img` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `our_partners`
+--
+
+INSERT INTO `our_partners` (`id`, `title`, `img`, `created_at`, `updated_at`) VALUES
+(1, 'jquery', 'our-partners\\November2019\\j54Px2RGimN2pN8xfcwZ.png', '2019-11-25 09:57:29', '2019-11-25 09:57:29'),
+(2, 'WP', 'our-partners\\November2019\\k2C5Ztf9mjAzjDF4ojEB.png', '2019-11-25 09:57:41', '2019-11-25 09:57:41'),
+(3, 'less', 'our-partners\\November2019\\BroO0MlXMcT4RRoJgVb5.png', '2019-11-25 09:57:53', '2019-11-25 09:57:53'),
+(4, 'envato', 'our-partners\\November2019\\7UH0dCZTt86dnuOfiTJo.png', '2019-11-25 09:58:08', '2019-11-25 09:58:08'),
+(5, 'saaa', 'our-partners\\November2019\\7o8h7m4Tm0LRs5lAVUpI.png', '2019-11-25 09:58:20', '2019-11-25 09:58:20'),
+(6, 'Spo', 'our-partners\\November2019\\TlOuHez2m9EJwz5fMeA2.png', '2019-11-25 09:58:29', '2019-11-25 09:58:29');
 
 -- --------------------------------------------------------
 
@@ -493,7 +591,22 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (53, 'read_features', 'features', '2019-11-23 11:02:13', '2019-11-23 11:02:13'),
 (54, 'edit_features', 'features', '2019-11-23 11:02:13', '2019-11-23 11:02:13'),
 (55, 'add_features', 'features', '2019-11-23 11:02:13', '2019-11-23 11:02:13'),
-(56, 'delete_features', 'features', '2019-11-23 11:02:13', '2019-11-23 11:02:13');
+(56, 'delete_features', 'features', '2019-11-23 11:02:13', '2019-11-23 11:02:13'),
+(62, 'browse_our_clients', 'our_clients', '2019-11-25 09:51:12', '2019-11-25 09:51:12'),
+(63, 'read_our_clients', 'our_clients', '2019-11-25 09:51:12', '2019-11-25 09:51:12'),
+(64, 'edit_our_clients', 'our_clients', '2019-11-25 09:51:12', '2019-11-25 09:51:12'),
+(65, 'add_our_clients', 'our_clients', '2019-11-25 09:51:12', '2019-11-25 09:51:12'),
+(66, 'delete_our_clients', 'our_clients', '2019-11-25 09:51:12', '2019-11-25 09:51:12'),
+(67, 'browse_our_partners', 'our_partners', '2019-11-25 09:51:27', '2019-11-25 09:51:27'),
+(68, 'read_our_partners', 'our_partners', '2019-11-25 09:51:27', '2019-11-25 09:51:27'),
+(69, 'edit_our_partners', 'our_partners', '2019-11-25 09:51:27', '2019-11-25 09:51:27'),
+(70, 'add_our_partners', 'our_partners', '2019-11-25 09:51:27', '2019-11-25 09:51:27'),
+(71, 'delete_our_partners', 'our_partners', '2019-11-25 09:51:28', '2019-11-25 09:51:28'),
+(72, 'browse_client_comments', 'client_comments', '2019-11-25 10:41:30', '2019-11-25 10:41:30'),
+(73, 'read_client_comments', 'client_comments', '2019-11-25 10:41:30', '2019-11-25 10:41:30'),
+(74, 'edit_client_comments', 'client_comments', '2019-11-25 10:41:30', '2019-11-25 10:41:30'),
+(75, 'add_client_comments', 'client_comments', '2019-11-25 10:41:30', '2019-11-25 10:41:30'),
+(76, 'delete_client_comments', 'client_comments', '2019-11-25 10:41:30', '2019-11-25 10:41:30');
 
 -- --------------------------------------------------------
 
@@ -589,7 +702,22 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (53, 1),
 (54, 1),
 (55, 1),
-(56, 1);
+(56, 1),
+(62, 1),
+(63, 1),
+(64, 1),
+(65, 1),
+(66, 1),
+(67, 1),
+(68, 1),
+(69, 1),
+(70, 1),
+(71, 1),
+(72, 1),
+(73, 1),
+(74, 1),
+(75, 1),
+(76, 1);
 
 -- --------------------------------------------------------
 
@@ -846,7 +974,24 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 (124, 'features', 'title', 2, 'ar', 'أنظمة الأمن والحماية', '2019-11-25 06:16:12', '2019-11-25 06:16:12'),
 (125, 'features', 'body', 2, 'ar', '<ul dir=\"rtl\" style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: #333333; font-family: \'Droid Arabic Kufi\';\">\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">كاميرات المراقبة.</em></strong></li>\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">أنظمة إنذار الحريق المبكر.</em></strong></li>\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">أنظمة الإنذار ضد السرقة</em></strong><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">&nbsp;.</em></strong></li>\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">أنظمة التحكم بالدخول.</em></strong></li>\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">أجهزة الحضور الإنصراف.</em></strong></li>\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">الأنظمة الصوتية.</em></strong></li>\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">كواشف المعادن والمفرقعات.</em></strong></li>\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">البوابات الأمنية (منازل &ndash; جراجات - أسواق).</em></strong></li>\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">أجهزة حفظ الطاقة&nbsp;</em></strong><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\"><span dir=\"LTR\" style=\"box-sizing: border-box;\">UPS</span></em></strong><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">&nbsp;.</em></strong></li>\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">الدش المركزى.</em></strong></li>\n</ul>', '2019-11-25 06:16:12', '2019-11-25 06:16:12'),
 (126, 'features', 'title', 3, 'ar', 'الدعم الفنى و الضمان', '2019-11-25 06:37:36', '2019-11-25 06:37:36'),
-(127, 'features', 'body', 3, 'ar', '<ul dir=\"rtl\" style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: #333333; font-family: \'Droid Arabic Kufi\';\">\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">دعم فنى مجانى لمدة 3 شهور.</em></strong></li>\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">ضمان عام على جميع المنتجات.</em></strong></li>\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">عقود الصيانة الدورية.</em></strong></li>\n</ul>', '2019-11-25 06:37:36', '2019-11-25 06:37:36');
+(127, 'features', 'body', 3, 'ar', '<ul dir=\"rtl\" style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; color: #333333; font-family: \'Droid Arabic Kufi\';\">\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">دعم فنى مجانى لمدة 3 شهور.</em></strong></li>\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">ضمان عام على جميع المنتجات.</em></strong></li>\n<li style=\"box-sizing: border-box;\"><strong style=\"box-sizing: border-box;\"><em style=\"box-sizing: border-box;\">عقود الصيانة الدورية.</em></strong></li>\n</ul>', '2019-11-25 06:37:36', '2019-11-25 06:37:36'),
+(128, 'menu_items', 'title', 27, 'ar', 'عملائنا', '2019-11-25 09:53:32', '2019-11-25 09:53:32'),
+(129, 'menu_items', 'title', 28, 'ar', 'شركائنا', '2019-11-25 09:54:36', '2019-11-25 09:54:36'),
+(130, 'menu_items', 'title', 29, 'ar', 'اراء العملاء', '2019-11-25 10:50:46', '2019-11-25 10:50:46'),
+(131, 'data_rows', 'display_name', 97, 'ar', 'Id', '2019-11-25 10:52:27', '2019-11-25 10:52:27'),
+(132, 'data_rows', 'display_name', 98, 'ar', 'Name', '2019-11-25 10:52:27', '2019-11-25 10:52:27'),
+(133, 'data_rows', 'display_name', 99, 'ar', 'Jop', '2019-11-25 10:52:27', '2019-11-25 10:52:27'),
+(134, 'data_rows', 'display_name', 100, 'ar', 'Comment', '2019-11-25 10:52:27', '2019-11-25 10:52:27'),
+(135, 'data_rows', 'display_name', 101, 'ar', 'Created At', '2019-11-25 10:52:27', '2019-11-25 10:52:27'),
+(136, 'data_rows', 'display_name', 102, 'ar', 'Updated At', '2019-11-25 10:52:27', '2019-11-25 10:52:27'),
+(137, 'data_types', 'display_name_singular', 15, 'ar', 'Client Comment', '2019-11-25 10:52:27', '2019-11-25 10:52:27'),
+(138, 'data_types', 'display_name_plural', 15, 'ar', 'Client Comments', '2019-11-25 10:52:28', '2019-11-25 10:52:28'),
+(139, 'client_comments', 'name', 1, 'ar', 'احمد توفيق', '2019-11-25 10:53:46', '2019-11-25 10:53:46'),
+(140, 'client_comments', 'jop', 1, 'ar', 'مدير شركه الغزاوي ', '2019-11-25 10:53:46', '2019-11-25 10:53:46'),
+(141, 'client_comments', 'comment', 1, 'ar', 'هذا الويبسايت اكثر من رائع في كل شئ', '2019-11-25 10:53:46', '2019-11-25 10:53:46'),
+(142, 'client_comments', 'name', 2, 'ar', 'محمد شعبان', '2019-11-25 10:59:32', '2019-11-25 10:59:32'),
+(143, 'client_comments', 'jop', 2, 'ar', 'مدير شركه سيف لايف', '2019-11-25 10:59:32', '2019-11-25 10:59:32'),
+(144, 'client_comments', 'comment', 2, 'ar', 'هذا الويب من افضل ما يمكن ان يستخدم وشكرا واي كلام بقي وكده يشير فعل يدعو مفاوضات أضعفت في رأسها أنا يرى الأميركية في ب للتأثير فتحت من الأكبر قدام واشنطن وكل كثرة أنهم وشعوبها أعتقد لدينا لأن بشأن قالوا تراجع أنها الأحداث مصالح في ودول و القضايا الأعلى سوريا تعقيدا في مع أميركا في والأسلحة انسحاب الثورات غزة الجانب جنب إسرائيل العالمي بشكل التقرير ', '2019-11-25 10:59:32', '2019-11-25 10:59:32');
 
 -- --------------------------------------------------------
 
@@ -900,6 +1045,12 @@ ALTER TABLE `categories`
   ADD KEY `categories_parent_id_foreign` (`parent_id`);
 
 --
+-- Indexes for table `client_comments`
+--
+ALTER TABLE `client_comments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `data_rows`
 --
 ALTER TABLE `data_rows`
@@ -944,6 +1095,18 @@ ALTER TABLE `menu_items`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `our_clients`
+--
+ALTER TABLE `our_clients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `our_partners`
+--
+ALTER TABLE `our_partners`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1035,16 +1198,22 @@ ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `client_comments`
+--
+ALTER TABLE `client_comments`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1068,13 +1237,25 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `our_clients`
+--
+ALTER TABLE `our_clients`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `our_partners`
+--
+ALTER TABLE `our_partners`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -1086,7 +1267,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -1116,7 +1297,7 @@ ALTER TABLE `slides`
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT for table `users`
