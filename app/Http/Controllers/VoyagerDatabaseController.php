@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use foo\bar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -28,12 +29,12 @@ class VoyagerDatabaseController extends Controller
 
         $tables = array_map(function ($table) use ($dataTypes) {
             $table = [
-                'name'       => $table,
-                'slug'       => $dataTypes[$table]['slug'] ?? null,
+                'name' => $table,
+                'slug' => $dataTypes[$table]['slug'] ?? null,
                 'dataTypeId' => $dataTypes[$table]['id'] ?? null,
             ];
 
-            return (object) $table;
+            return (object)$table;
         }, SchemaManager::listTableNames());
 
         return Voyager::view('voyager::tools.database.index')->with(compact('dataTypes', 'tables'));
@@ -46,7 +47,6 @@ class VoyagerDatabaseController extends Controller
      */
     public function create()
     {
-
         $this->authorize('browse_database');
 
         $db = $this->prepareDbManager('create');
@@ -63,49 +63,117 @@ class VoyagerDatabaseController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         $this->authorize('browse_database');
 
         try {
-            $conn = 'database.connections.'.config('database.default');
+            $conn = 'database.connections.' . config('database.default');
             Type::registerCustomPlatformTypes();
 
             $table = $request->table;
             if (!is_array($request->table)) {
                 $table = json_decode($request->table, true);
             }
-            $table['options']['collate'] = config($conn.'.collation', 'utf8mb4_unicode_ci');
-            $table['options']['charset'] = config($conn.'.charset', 'utf8mb4');
+            $table['options']['collate'] = config($conn . '.collation', 'utf8_unicode_ci');
+            $table['options']['charset'] = config($conn . '.charset', 'utf8');
             $table = Table::make($table);
-            SchemaManager::createTable($table);
+            // SchemaManager::createTable($table);
 
             if (isset($request->create_model) && $request->create_model == 'on') {
                 $modelNamespace = config('voyager.models.namespace', app()->getNamespace());
                 $params = [
-                    'name' => $modelNamespace.Str::studly(Str::singular($table->name)),
+                    'name' => $modelNamespace . Str::studly(Str::singular($table->name)),
                 ];
 
-                // if (in_array('deleted_at', $request->input('field.*'))) {
-                //     $params['--softdelete'] = true;
-                // }
-
-                if (isset($request->create_migration) && $request->create_migration == 'on') {
-                    $params['--migration'] = true;
-                }
 
                 Artisan::call('voyager:make:model', $params);
             } elseif (isset($request->create_migration) && $request->create_migration == 'on') {
-                Artisan::call('make:migration', [
-                    'name'    => 'create_'.$table->name.'_table',
-                    '--table' => $table->name,
-                ]);
+
+
+            }
+//            --------------------------------Create Migration File-----------------------------------------------
+            $my_file = '../database/migrations/____create_' . $table->name . '_table.php';
+            $handle = fopen($my_file, 'w') or die('Cannot open file:  ' . $my_file); //implicitly creates file
+            $handle = fopen($my_file, 'a') or die('Cannot open file:  ' . $my_file);
+            $pD = '';
+
+            foreach ($table->columns as $ComputerNames) {
+                // if ($ComputerNames->gettype() == 'id') {
+                $pS = '';
+                $pR = '';
+                if ($ComputerNames->getautoIncrement() == 1) {
+                    $pS = "->autoIncrement()";
+                }
+                if ($ComputerNames->getunsigned() == 1) {
+                    $pS = $pS . "->unsigned()";
+                }
+                if ($ComputerNames->getnotnull() == 0) {
+                    $pS = $pS . "->nullable()";
+                }
+                if ($ComputerNames->getdefault() != '') {
+
+                    $pS = $pS . "->default('" . $ComputerNames->getdefault() . "')";
+                }
+                if ($ComputerNames->getlength() >= 1) {
+                    $pR = "," . $ComputerNames->getlength();
+                }
+
+                $X= str_replace('\\','',$ComputerNames->gettype());
+                if ($X == 'TinyInt'||$X == 'SmallInt'||$X == 'MediumInt'||$X == 'BigInt') {
+                    $X='Integer';
+                }
+                if ($X == 'TinyText'||$X == 'VarChar') {
+                    $X='String';
+                }
+
+                $pD = $pD . "\$table->" .  $X . "('" .$ComputerNames->getname(). "'" . $pR . ")" . $pS . "; \n";
+
             }
 
+            $pieces = explode("_", $table->name);
+            $className='';
+            for($i=0;$i < count($pieces) ;$i++){
+                $className=$className.ucfirst($pieces[$i]);
+
+            }
+            $data = "
+            <?php
+            use Illuminate\Database\Migrations\Migration;
+            use Illuminate\Database\Schema\Blueprint;
+            use Illuminate\Support\Facades\Schema;
+
+            class Create" . $className . "Table extends Migration
+            {
+            /**
+            * Run the migrations.
+            *
+            * @return void
+            */
+            public function up()
+            {
+
+            Schema::create('" . $table->name . "', function (Blueprint \$table) {
+                " . $pD . "
+            });
+            }
+
+            /**
+            * Reverse the migrations.
+            *
+            * @return void
+            */
+            public function down()
+            {
+                Schema::drop('" . $table->name . "');
+            }
+            }";
+            fwrite($handle, $data);
+            Artisan::call('migrate',[]);
+            //            --------------------------------Create Migration File-----------------------------------------------
             event(new TableAdded($table));
 
             return redirect()
-               ->route('voyager.database.index')
-               ->with($this->alertSuccess(__('voyager::database.success_create_table', ['table' => $table->name])));
+                ->route('voyager.database.index')
+                ->with($this->alertSuccess(__('voyager::database.success_create_table', ['table' => $table->name])));
         } catch (Exception $e) {
             return back()->with($this->alertException($e))->withInput();
         }
@@ -156,8 +224,8 @@ class VoyagerDatabaseController extends Controller
         }
 
         return redirect()
-               ->route('voyager.database.index')
-               ->with($this->alertSuccess(__('voyager::database.success_create_table', ['table' => $table['name']])));
+            ->route('voyager.database.index')
+            ->with($this->alertSuccess(__('voyager::database.success_create_table', ['table' => $table['name']])));
     }
 
     protected function prepareDbManager($action, $table = '')
@@ -175,8 +243,8 @@ class VoyagerDatabaseController extends Controller
 
             // Add prefilled columns
             $db->table->addColumn('id', 'integer', [
-                'unsigned'      => true,
-                'notnull'       => true,
+                'unsigned' => true,
+                'notnull' => true,
                 'autoincrement' => true,
             ]);
 

@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 04, 2019 at 06:08 AM
--- Server version: 10.1.40-MariaDB
--- PHP Version: 7.3.5
+-- Host: localhost:3306
+-- Generation Time: Dec 06, 2019 at 09:02 AM
+-- Server version: 5.7.27-0ubuntu0.18.04.1
+-- PHP Version: 7.2.24-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -443,13 +441,13 @@ CREATE TABLE `our_clients` (
 --
 
 INSERT INTO `our_clients` (`id`, `title`, `img`, `created_at`, `updated_at`) VALUES
-(1, 'Google', 'our-clients\\November2019\\J5oO34RxdSWoxRB8ZVhH.png', '2019-11-25 09:55:00', '2019-11-25 09:55:00'),
-(2, 'Spo', 'our-clients\\November2019\\dz35aG3JzfJQngvKIIRr.png', '2019-11-25 09:55:19', '2019-11-25 09:55:19'),
-(3, 'saaa', 'our-clients\\November2019\\4ebhuTZoJwaW15MJmaBY.png', '2019-11-25 09:55:31', '2019-11-25 09:55:31'),
-(4, 'envato', 'our-clients\\November2019\\LVb1Ch5lJmAXTCnNRVSk.png', '2019-11-25 09:55:47', '2019-11-25 09:55:47'),
-(5, 'less', 'our-clients\\November2019\\JPoOiNjT98Gfc7CAtoos.png', '2019-11-25 09:55:58', '2019-11-25 09:55:58'),
-(6, 'WP', 'our-clients\\November2019\\iZh5hASCtU5lNdAaszHW.png', '2019-11-25 09:56:13', '2019-11-25 09:56:13'),
-(7, 'jquery', 'our-clients\\November2019\\U1puGlhoJio6JfegUcaK.png', '2019-11-25 09:56:26', '2019-11-25 09:56:26');
+(1, 'Google', 'our-clients/December2019/qSzMvo41lDO7uThYuqer.png', '2019-11-25 09:55:00', '2019-12-04 20:00:06'),
+(2, 'Spo', 'our-clients/December2019/s1hO5Idi5eHmp9sGuVDY.png', '2019-11-25 09:55:00', '2019-12-04 19:59:49'),
+(3, 'saaa', 'our-clients/December2019/HkPWXkBSseDKhVg0lcBr.png', '2019-11-25 09:55:00', '2019-12-04 19:59:43'),
+(4, 'envato', 'our-clients/December2019/41lSFHblVgnZ2dUF27BW.png', '2019-11-25 09:55:00', '2019-12-04 19:59:43'),
+(5, 'less', 'our-clients/December2019/34d9gHf5rxd52nJWs4Po.png', '2019-11-25 09:55:00', '2019-12-04 19:59:43'),
+(6, 'WP', 'our-clients/December2019/7dluGBJz2mqcp8yrg9A9.png', '2019-11-25 09:56:00', '2019-12-04 19:59:02'),
+(7, 'jquery', 'our-clients/December2019/dRKHYTv8TPFmDNWFdcb4.png', '2019-11-25 09:56:00', '2019-12-04 19:58:49');
 
 -- --------------------------------------------------------
 
@@ -470,12 +468,12 @@ CREATE TABLE `our_partners` (
 --
 
 INSERT INTO `our_partners` (`id`, `title`, `img`, `created_at`, `updated_at`) VALUES
-(1, 'jquery', 'our-partners\\November2019\\j54Px2RGimN2pN8xfcwZ.png', '2019-11-25 09:57:29', '2019-11-25 09:57:29'),
-(2, 'WP', 'our-partners\\November2019\\k2C5Ztf9mjAzjDF4ojEB.png', '2019-11-25 09:57:41', '2019-11-25 09:57:41'),
-(3, 'less', 'our-partners\\November2019\\BroO0MlXMcT4RRoJgVb5.png', '2019-11-25 09:57:53', '2019-11-25 09:57:53'),
-(4, 'envato', 'our-partners\\November2019\\7UH0dCZTt86dnuOfiTJo.png', '2019-11-25 09:58:08', '2019-11-25 09:58:08'),
-(5, 'saaa', 'our-partners\\November2019\\7o8h7m4Tm0LRs5lAVUpI.png', '2019-11-25 09:58:20', '2019-11-25 09:58:20'),
-(6, 'Spo', 'our-partners\\November2019\\TlOuHez2m9EJwz5fMeA2.png', '2019-11-25 09:58:29', '2019-11-25 09:58:29');
+(1, 'jquery', 'our-partners/December2019/Unb6CQgmFhWHpxrFryAt.png', '2019-11-25 09:57:00', '2019-12-04 20:01:35'),
+(2, 'WP', 'our-partners/December2019/5d8NYykYA0efDH6jSS7s.png', '2019-11-25 09:57:00', '2019-12-04 20:01:32'),
+(3, 'less', 'our-partners/December2019/iAbreHmosn72jZdKk4DC.png', '2019-11-25 09:57:00', '2019-12-04 20:01:27'),
+(4, 'envato', 'our-partners/December2019/sPJ7aFAm3pW0suqHebBW.png', '2019-11-25 09:58:00', '2019-12-04 20:01:08'),
+(5, 'saaa', 'our-partners/December2019/mm90pPI7ktWMrI4uEGyO.png', '2019-11-25 09:58:00', '2019-12-04 20:00:48'),
+(6, 'Spo', 'our-partners/December2019/9UptheGbq328YiCtk8dZ.png', '2019-11-25 09:58:00', '2019-12-04 20:00:38');
 
 -- --------------------------------------------------------
 
@@ -814,12 +812,12 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (18, 'home.word-rotator-words-ar', 'word Rotator Words Ar', 'بورتر تعتبر |الافضل|الاسهل|الاسرع|الاغلي| ويوجد بها مميزات اكثر', NULL, 'text', 13, 'home'),
 (19, 'home.word-rotator-details', 'word Rotator Details', 'explained had ought two she ample can met shoud said bad i Prepared By wholly fat Written there then dependent as remarkably for position many in though in', NULL, 'text_area', 12, 'home'),
 (20, 'home.word-rotator-details-ar', 'word Rotator Details Ar', 'استبدال ويحتوي فعل وعلى وشعور لاتخاذ يلا خلاف المنطقة صورة دول الثورات يكشف خدمة ثالثا في تبيع أن حساب واللى الإسلامية الإنسان وذلك واجتماعيا انت إثر الثورة مناطق لأنهم وتأثير الفلسطينية العربي في المنطقة أهم والاقتصادية', NULL, 'text_area', 14, 'home'),
-(21, 'home.Strategy', 'Strategy', 'settings\\November2019\\7Omg4PJyCrfQ5byEcRKg.png', NULL, 'image', 15, 'home'),
-(22, 'home.Planning', 'Planning', 'settings\\November2019\\uRQatibMisq0yQsgIlVQ.png', NULL, 'image', 16, 'home'),
-(23, 'home.Build', 'Build', 'settings\\November2019\\w9JJMBldUF9DLgNz60ZB.png', NULL, 'image', 17, 'home'),
-(24, 'home.Our_Work_1', 'Our Work 1', 'settings\\November2019\\jHheNzGNYOZov77H2yLG.jpg', NULL, 'image', 18, 'home'),
-(25, 'home.Our_Work_2', 'Our Work 2', 'settings\\November2019\\CL1InMBm6v8PGvgXok5n.jpg', NULL, 'image', 19, 'home'),
-(26, 'home.Our_Work_3', 'Our Work 3', 'settings\\November2019\\jTsIMhL75HVfsAmefgEj.jpg', NULL, 'image', 20, 'home');
+(21, 'home.Strategy', 'Strategy', 'settings/December2019/smJTtKw3QyxayJr0Qx2B.png', NULL, 'image', 15, 'home'),
+(22, 'home.Planning', 'Planning', 'settings/December2019/OjI6DQA93smw2Iza0CUW.png', NULL, 'image', 16, 'home'),
+(23, 'home.Build', 'Build', 'settings/December2019/Yu739DgbMjoRAdWVs7jg.png', NULL, 'image', 17, 'home'),
+(24, 'home.Our_Work_1', 'Our Work 1', 'settings/December2019/U1bjKa4sy7Nl8A3T5nBv.jpg', NULL, 'image', 18, 'home'),
+(25, 'home.Our_Work_2', 'Our Work 2', 'settings/December2019/70YqwEJQR9oBMFcHfzd9.jpg', NULL, 'image', 19, 'home'),
+(26, 'home.Our_Work_3', 'Our Work 3', 'settings/December2019/eyp1qLEuKbKYS2gpNgPY.jpg', NULL, 'image', 20, 'home');
 
 -- --------------------------------------------------------
 
@@ -842,7 +840,8 @@ CREATE TABLE `slides` (
 --
 
 INSERT INTO `slides` (`id`, `title`, `body`, `img`, `created_at`, `updated_at`, `maintitle`) VALUES
-(3, 'THE BEST DESIGN', '<div class=\"wpb_text_column wpb_content_element  lead\" style=\"box-sizing: border-box; margin-bottom: 35px; font-size: 1.25rem; font-weight: 300; line-height: 1.8rem; color: #777777; font-family: \'Open Sans\';\">\n<div class=\"wpb_wrapper\" style=\"box-sizing: border-box; margin-bottom: 0px;\">\n<p style=\"box-sizing: border-box; margin: 0px; line-height: 1.8rem; letter-spacing: 0px; text-align: center;\">&nbsp;</p>\n<p style=\"box-sizing: border-box; margin: 0px; line-height: 1.8rem; letter-spacing: 0px; text-align: center;\">&nbsp;</p>\n<p style=\"box-sizing: border-box; margin: 0px; line-height: 1.8rem; letter-spacing: 0px; text-align: center;\"><span style=\"box-sizing: border-box;\">Trusted by over 17,000 satisfied users, Porto is a huge success</span><br style=\"box-sizing: border-box;\" /><span style=\"box-sizing: border-box; margin-bottom: 0px;\">in the of one of the world&rsquo;s largest MarketPlace.</span></p>\n<p><span style=\"box-sizing: border-box; margin-bottom: 0px;\">&nbsp;</span></p>\n</div>\n</div>', 'slides/November2019/iA0yCeQ9hOgDWw9Lnqou.jpg', '2019-11-14 08:37:00', '2019-11-18 05:57:28', 'WE WORK HARD AND PORTO HAS');
+(3, 'THE BEST DESIGN', '<div class=\"wpb_text_column wpb_content_element  lead\" style=\"box-sizing: border-box; margin-bottom: 35px; font-size: 1.25rem; font-weight: 300; line-height: 1.8rem; color: #777777; font-family: \'Open Sans\';\">\n<div class=\"wpb_wrapper\" style=\"box-sizing: border-box; margin-bottom: 0px;\">\n<p style=\"box-sizing: border-box; margin: 0px; line-height: 1.8rem; letter-spacing: 0px; text-align: center;\">&nbsp;</p>\n<p style=\"box-sizing: border-box; margin: 0px; line-height: 1.8rem; letter-spacing: 0px; text-align: center;\">&nbsp;</p>\n<p style=\"box-sizing: border-box; margin: 0px; line-height: 1.8rem; letter-spacing: 0px; text-align: center;\"><span style=\"box-sizing: border-box;\">Trusted by over 17,000 satisfied users, Porto is a huge success</span><br style=\"box-sizing: border-box;\" /><span style=\"box-sizing: border-box; margin-bottom: 0px;\">in the of one of the world&rsquo;s largest MarketPlace.</span></p>\n<p><span style=\"box-sizing: border-box; margin-bottom: 0px;\">&nbsp;</span></p>\n</div>\n</div>', 'slides/December2019/xSlQYuhSRzcq8ItqpnBz.jpg', '2019-11-14 08:37:00', '2019-12-04 19:49:16', 'WE WORK HARD AND PORTO HAS'),
+(4, 'THE BEST DESIGN', '<p><span style=\"color: #777777; font-family: \'Open Sans\'; font-size: 17.5px;\">&nbsp;Trusted by over 17,000 satisfied users, Porto is a huge successin the of one of the world</span></p>', 'slides/December2019/VjUilMsU8wavkhBtwBv7.jpg', '2019-12-06 08:56:00', '2019-12-06 08:57:13', 'WE WORK HARD AND PORTO HAS');
 
 -- --------------------------------------------------------
 
@@ -991,7 +990,10 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 (141, 'client_comments', 'comment', 1, 'ar', 'هذا الويبسايت اكثر من رائع في كل شئ', '2019-11-25 10:53:46', '2019-11-25 10:53:46'),
 (142, 'client_comments', 'name', 2, 'ar', 'محمد شعبان', '2019-11-25 10:59:32', '2019-11-25 10:59:32'),
 (143, 'client_comments', 'jop', 2, 'ar', 'مدير شركه سيف لايف', '2019-11-25 10:59:32', '2019-11-25 10:59:32'),
-(144, 'client_comments', 'comment', 2, 'ar', 'هذا الويب من افضل ما يمكن ان يستخدم وشكرا واي كلام بقي وكده يشير فعل يدعو مفاوضات أضعفت في رأسها أنا يرى الأميركية في ب للتأثير فتحت من الأكبر قدام واشنطن وكل كثرة أنهم وشعوبها أعتقد لدينا لأن بشأن قالوا تراجع أنها الأحداث مصالح في ودول و القضايا الأعلى سوريا تعقيدا في مع أميركا في والأسلحة انسحاب الثورات غزة الجانب جنب إسرائيل العالمي بشكل التقرير ', '2019-11-25 10:59:32', '2019-11-25 10:59:32');
+(144, 'client_comments', 'comment', 2, 'ar', 'هذا الويب من افضل ما يمكن ان يستخدم وشكرا واي كلام بقي وكده يشير فعل يدعو مفاوضات أضعفت في رأسها أنا يرى الأميركية في ب للتأثير فتحت من الأكبر قدام واشنطن وكل كثرة أنهم وشعوبها أعتقد لدينا لأن بشأن قالوا تراجع أنها الأحداث مصالح في ودول و القضايا الأعلى سوريا تعقيدا في مع أميركا في والأسلحة انسحاب الثورات غزة الجانب جنب إسرائيل العالمي بشكل التقرير ', '2019-11-25 10:59:32', '2019-11-25 10:59:32'),
+(145, 'slides', 'maintitle', 4, 'ar', 'نحن نعمل بجد', '2019-12-06 08:56:33', '2019-12-06 08:56:33'),
+(146, 'slides', 'title', 4, 'ar', 'افضل اختيار', '2019-12-06 08:56:33', '2019-12-06 08:56:33'),
+(147, 'slides', 'body', 4, 'ar', '<p><span style=\"color: #777777; font-family: \'Open Sans\'; font-size: 17.5px;\">&nbsp;لقد تم اختيارنا من ضمن</span></p>', '2019-12-06 08:56:33', '2019-12-06 08:56:33');
 
 -- --------------------------------------------------------
 
@@ -1196,115 +1198,96 @@ ALTER TABLE `user_roles`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `client_comments`
 --
 ALTER TABLE `client_comments`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
-
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `features`
 --
 ALTER TABLE `features`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
 --
 -- AUTO_INCREMENT for table `our_clients`
 --
 ALTER TABLE `our_clients`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `our_partners`
 --
 ALTER TABLE `our_partners`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
-
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
 --
 -- AUTO_INCREMENT for table `slides`
 --
 ALTER TABLE `slides`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
-
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- Constraints for dumped tables
 --
@@ -1346,7 +1329,6 @@ ALTER TABLE `users`
 ALTER TABLE `user_roles`
   ADD CONSTRAINT `user_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `user_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
