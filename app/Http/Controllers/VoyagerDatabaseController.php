@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use TCG\Voyager\Database\DatabaseUpdater;
+use App\Http\Controllers\DatabaseUpdater;
 use TCG\Voyager\Database\Schema\Column;
 use TCG\Voyager\Database\Schema\Identifier;
 use TCG\Voyager\Database\Schema\SchemaManager;
@@ -197,7 +197,6 @@ class VoyagerDatabaseController extends Controller
         }
 
         $db = $this->prepareDbManager('update', $table);
-
         return Voyager::view('voyager::tools.database.edit-add', compact('db'));
     }
 
