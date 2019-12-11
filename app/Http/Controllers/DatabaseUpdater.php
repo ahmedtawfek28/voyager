@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Doctrine\DBAL\Schema\Column;
 use Doctrine\DBAL\Schema\SchemaException;
 use Doctrine\DBAL\Schema\TableDiff;
+use Illuminate\Support\Facades\Artisan;
 use TCG\Voyager\Database\Schema\SchemaManager;
 use TCG\Voyager\Database\Schema\Table;
 use TCG\Voyager\Database\Types\Type;
@@ -82,7 +84,55 @@ class DatabaseUpdater
 
         // Update the table
         if ($tableDiff) {
-            SchemaManager::alterTable($tableDiff);
+//            --------------------------------Update Migration File-----------------------------------------------
+            $oldName = $this->originalTable->getName();
+
+            $fileName = 'up_n_' . $oldName . '_t_' . $newName;
+            $pieces = explode("_", $fileName);
+            $className = '';
+            for ($i = 0, $iMax = count($pieces); $i < $iMax; $i++) {
+                $className = $className . ucfirst($pieces[$i]);
+
+            }
+
+            $my_file = '../database/migrations/' . date('Y_m_d') . '_' . time() . '_' . $fileName . '.php';
+            $handle = fopen($my_file, 'w') or die('Cannot open file:  ' . $my_file); //implicitly creates file
+            $handle = fopen($my_file, 'a') or die('Cannot open file:  ' . $my_file);
+            $pD = '';
+
+
+            $data = "
+<?php
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class " . $className . " extends Migration
+            {
+                /**
+                 * Run the migrations.
+                 *
+                 * @return void
+                 */
+                public function up()
+                {
+                    Schema::rename('$oldName', '$newName');
+                }
+
+                /**
+                 * Reverse the migrations.
+                 *
+                 * @return void
+                 */
+                public function down()
+                {
+                    Schema::rename('$newName', '$oldName');
+                }
+            }";
+            fwrite($handle, $data);
+            Artisan::call('migrate', []);
+            //            --------------------------------Update Migration File-----------------------------------------------
+
         }
     }
 
@@ -91,7 +141,8 @@ class DatabaseUpdater
      *
      * @return \Doctrine\DBAL\Schema\TableDiff
      */
-    protected function getRenamedColumnsDiff()
+    protected
+    function getRenamedColumnsDiff()
     {
         $renamedColumns = $this->getRenamedColumns();
 
@@ -114,7 +165,8 @@ class DatabaseUpdater
      *
      * @return \Doctrine\DBAL\Schema\TableDiff
      */
-    protected function getRenamedDiff()
+    protected
+    function getRenamedDiff()
     {
         $renamedColumns = $this->getRenamedColumns();
         $renamedIndexes = $this->getRenamedIndexes();
@@ -142,7 +194,8 @@ class DatabaseUpdater
      *
      * @return array
      */
-    protected function getRenamedColumns()
+    protected
+    function getRenamedColumns()
     {
         $renamedColumns = [];
 
@@ -167,7 +220,8 @@ class DatabaseUpdater
      *
      * @return array
      */
-    protected function getRenamedIndexes()
+    protected
+    function getRenamedIndexes()
     {
         $renamedIndexes = [];
 
