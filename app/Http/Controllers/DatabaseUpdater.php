@@ -61,7 +61,7 @@ class DatabaseUpdater
         } else {
             $newName = false;
         }
-
+//dd($newName);
         // Rename columns
         if ($renamedColumnsDiff = $this->getRenamedColumnsDiff()) {
             SchemaManager::alterTable($renamedColumnsDiff);
@@ -84,24 +84,28 @@ class DatabaseUpdater
 
         // Update the table
         if ($tableDiff) {
+
 //            --------------------------------Update Migration File-----------------------------------------------
-            $oldName = $this->originalTable->getName();
 
-            $fileName = 'up_n_' . $oldName . '_t_' . $newName;
-            $pieces = explode("_", $fileName);
-            $className = '';
-            for ($i = 0, $iMax = count($pieces); $i < $iMax; $i++) {
-                $className = $className . ucfirst($pieces[$i]);
+//            --------------------------------TableName Migration File-----------------------------------------------
 
-            }
+            if($newName!=false){
+                $oldName = $this->originalTable->getName();
+                $fileName = 'up_n_' . $oldName . '_t_' . $newName;
+                $pieces = explode("_", $fileName);
+                $className = '';
+                for ($i = 0, $iMax = count($pieces); $i < $iMax; $i++) {
+                    $className = $className . ucfirst($pieces[$i]);
 
-            $my_file = '../database/migrations/' . date('Y_m_d') . '_' . time() . '_' . $fileName . '.php';
-            $handle = fopen($my_file, 'w') or die('Cannot open file:  ' . $my_file); //implicitly creates file
-            $handle = fopen($my_file, 'a') or die('Cannot open file:  ' . $my_file);
-            $pD = '';
+                }
+
+                $my_file = '../database/migrations/' . date('Y_m_d') . '_' . time() . '_' . $fileName . '.php';
+                $handle = fopen($my_file, 'w') or die('Cannot open file:  ' . $my_file); //implicitly creates file
+                $handle = fopen($my_file, 'a') or die('Cannot open file:  ' . $my_file);
+                $pD = '';
 
 
-            $data = "
+                $data = "
 <?php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -129,8 +133,12 @@ class " . $className . " extends Migration
                     Schema::rename('$newName', '$oldName');
                 }
             }";
-            fwrite($handle, $data);
-            Artisan::call('migrate', []);
+                fwrite($handle, $data);
+                Artisan::call('migrate', []);
+
+            }
+//            --------------------------------TableName Migration File-----------------------------------------------
+
             //            --------------------------------Update Migration File-----------------------------------------------
 
         }

@@ -91,7 +91,8 @@ class VoyagerDatabaseController extends Controller
 
             }
 //            --------------------------------Create Migration File-----------------------------------------------
-            $my_file = '../database/migrations/____create_' . $table->name . '_table.php';
+            $tableName= date('Y_m_d') . '_' . time() . '_create_' . $table->name . '_table.php';
+            $my_file = '../database/migrations/' . $tableName ;
             $handle = fopen($my_file, 'w') or die('Cannot open file:  ' . $my_file); //implicitly creates file
             $handle = fopen($my_file, 'a') or die('Cannot open file:  ' . $my_file);
             $pD = '';
@@ -131,7 +132,7 @@ class VoyagerDatabaseController extends Controller
 
             $pieces = explode("_", $table->name);
             $className='';
-            for($i=0;$i < count($pieces) ;$i++){
+            for($i=0, $iMax = count($pieces); $i < $iMax; $i++){
                 $className=$className.ucfirst($pieces[$i]);
 
             }
