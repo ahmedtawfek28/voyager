@@ -61,7 +61,6 @@ class DatabaseUpdater
         } else {
             $newName = false;
         }
-//dd($newName);
         // Rename columns
         if ($renamedColumnsDiff = $this->getRenamedColumnsDiff()) {
             SchemaManager::alterTable($renamedColumnsDiff);
@@ -71,6 +70,9 @@ class DatabaseUpdater
         }
 
         $tableDiff = $this->originalTable->diff($this->table);
+
+//        dd($tableDiff->addedColumns);
+
 
         // Add new table name to tableDiff
         if ($newName) {
@@ -87,9 +89,10 @@ class DatabaseUpdater
 
 //            --------------------------------Update Migration File-----------------------------------------------
 
+
 //            --------------------------------TableName Migration File-----------------------------------------------
 
-            if($newName!=false){
+            if ($newName != false) {
                 $oldName = $this->originalTable->getName();
                 $fileName = 'up_n_' . $oldName . '_t_' . $newName;
                 $pieces = explode("_", $fileName);
@@ -102,8 +105,6 @@ class DatabaseUpdater
                 $my_file = '../database/migrations/' . date('Y_m_d') . '_' . time() . '_' . $fileName . '.php';
                 $handle = fopen($my_file, 'w') or die('Cannot open file:  ' . $my_file); //implicitly creates file
                 $handle = fopen($my_file, 'a') or die('Cannot open file:  ' . $my_file);
-                $pD = '';
-
 
                 $data = "
 <?php
@@ -138,6 +139,101 @@ class " . $className . " extends Migration
 
             }
 //            --------------------------------TableName Migration File-----------------------------------------------
+//            --------------------------------Add Column Migration File-----------------------------------------------
+            $addColumnCount = 0;
+            $fileAddNameMain = '';
+            $AdddedNames = '';
+            $AddColumnsData = '';
+            $DropAddColumnsData = '';
+            foreach ($tableDiff->addedColumns as $addColumn) {
+                $AdddedNames = $AdddedNames . $addColumn->getName() . '_';
+                $TableAddName = $addColumn->getType()->tableName;
+                $addColumnCount++;
+                $pS = '';
+                $pR = '';
+                if ($addColumn->getautoIncrement() == 1) {
+                    $pS = "->autoIncrement()";
+                }
+                if ($addColumn->getunsigned() == 1) {
+                    $pS = $pS . "->unsigned()";
+                }
+                if ($addColumn->getnotnull() == 0) {
+                    $pS = $pS . "->nullable()";
+                }
+                if ($addColumn->getdefault() != '') {
+
+                    $pS = $pS . "->default('" . $addColumn->getdefault() . "')";
+                }
+                if ($addColumn->getlength() >= 1) {
+                    $pR = "," . $addColumn->getlength();
+                }
+
+                $X = str_replace('\\', '', $addColumn->gettype());
+                if ($X == 'TinyInt' || $X == 'SmallInt' || $X == 'MediumInt' || $X == 'BigInt') {
+                    $X = 'Integer';
+                }
+                if ($X == 'TinyText' || $X == 'VarChar') {
+                    $X = 'String';
+                }
+
+                $AddColumnsData = $AddColumnsData . "\$table->" . $X . "('" . $addColumn->getname() . "'" . $pR . ")" . $pS . "; \n";
+                $DropAddColumnsData = $DropAddColumnsData . "\$table->dropColumn( '" . $addColumn->getname() . "');\n";
+            }
+            if ($addColumnCount > 0) {
+                $pieces = explode("_", 'add_' . $AdddedNames . 'to_' . $TableAddName . '_table');
+                $className = '';
+                for ($i = 0, $iMax = count($pieces); $i < $iMax; $i++) {
+                    $className = $className . ucfirst($pieces[$i]);
+
+                }
+
+                $tableAddName = date('Y_m_d') . '_' . time() . '_add_' . $AdddedNames . 'to_' . $TableAddName . '_table.php';
+                $fileAddNameMain = '../database/migrations/' . $tableAddName;
+                $handle = fopen($fileAddNameMain, 'w') or die('Cannot open file:  ' . $fileAddNameMain); //implicitly creates file
+                $handle = fopen($fileAddNameMain, 'a') or die('Cannot open file:  ' . $fileAddNameMain);
+                $data = "
+            <?php
+            use Illuminate\Database\Migrations\Migration;
+            use Illuminate\Database\Schema\Blueprint;
+            use Illuminate\Support\Facades\Schema;
+
+            class " . $className . " extends Migration
+            {
+            /**
+            * Run the migrations.
+            *
+            * @return void
+            */
+            public function up()
+            {
+
+            Schema::table( '" . $TableAddName . "', function (Blueprint \$table) {
+                " . $AddColumnsData . "
+            });
+            }
+
+            /**
+            * Reverse the migrations.
+            *
+            * @return void
+            */
+            public function down()
+            {
+            Schema::table( '" . $TableAddName . "', function (Blueprint \$table) {
+                " . $DropAddColumnsData . "
+           });
+            }
+            }";
+                fwrite($handle, $data);
+                Artisan::call('migrate', []);
+
+            }
+
+//             --------------------------------Add Column Migration File-----------------------------------------------
+
+
+//             --------------------------------Add Column Migration File-----------------------------------------------
+
 
             //            --------------------------------Update Migration File-----------------------------------------------
 
